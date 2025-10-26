@@ -1,4 +1,5 @@
 const path = require('path');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -18,8 +19,15 @@ module.exports = {
           presets: ['@babel/preset-env'],
         },
       },
+      // Shaders
+      {
+        test: /\.(glsl|vs|fs|vert|frag)$/,
+        exclude: /node_modules/,
+        use: ['raw-loader'],
+      },
     ],
   },
+  plugins: [new CompressionPlugin()],
   devServer: {
     contentBase: path.join(__dirname, ''),
     compress: true,
