@@ -75,6 +75,24 @@ gltfLoader.load('/src/models/football.glb', (gltf) => {
   loadedModels.push(model);
 });
 
+// Mouse controls
+let mouseX = 0, mouseY = 0;
+let isMouseDown = false;
+
+// Mouse event listeners
+document.addEventListener('mousemove', (event) => {
+  mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+  mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+});
+
+document.addEventListener('mousedown', () => {
+  isMouseDown = true;
+});
+
+document.addEventListener('mouseup', () => {
+  isMouseDown = false;
+});
+
 // Animation loop
 function animate() {
   requestAnimationFrame(animate);
@@ -86,6 +104,13 @@ function animate() {
   loadedModels.forEach(model => {
     model.rotation.y += 0.005;
   });
+  
+  // Camera movement based on mouse
+  if (isMouseDown) {
+    camera.position.x += mouseX * 0.1;
+    camera.position.y += mouseY * 0.1;
+    camera.lookAt(0, 0, 0);
+  }
   
   renderer.render(scene, camera);
 }
