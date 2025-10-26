@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "three": "^0.117.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "ammo.js": "github:kripken/ammo.js"
   }
 }
