@@ -1,5 +1,9 @@
 import * as THREE from 'three';
 
+// Load texture
+const textureLoader = new THREE.TextureLoader();
+const spaceTexture = textureLoader.load('/src/jsm/space.jpg');
+
 // Basic Three.js scene setup
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -11,6 +15,9 @@ renderer.setClearColor(0x000011); // Dark blue space background
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 document.getElementById('WEBGLcontainer').appendChild(renderer.domElement);
+
+// Set background texture
+scene.background = spaceTexture;
 
 // Add lighting
 const ambientLight = new THREE.AmbientLight(0x404040, 0.3);
@@ -25,7 +32,8 @@ scene.add(directionalLight);
 
 // Add a basic sphere to represent a planet
 const geometry = new THREE.SphereGeometry(1, 32, 32);
-const material = new THREE.MeshLambertMaterial({ color: 0x8888ff });
+const planetTexture = textureLoader.load('/src/jsm/space1.jpg');
+const material = new THREE.MeshLambertMaterial({ map: planetTexture });
 const sphere = new THREE.Mesh(geometry, material);
 sphere.castShadow = true;
 sphere.receiveShadow = true;
