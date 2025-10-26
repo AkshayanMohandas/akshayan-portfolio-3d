@@ -7,25 +7,49 @@ const renderer = new THREE.WebGLRenderer({ antialias: true });
 
 // Set up renderer
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setClearColor(0x000000);
+renderer.setClearColor(0x000011); // Dark blue space background
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 document.getElementById('WEBGLcontainer').appendChild(renderer.domElement);
 
-// Add a basic cube to test the scene
-const geometry = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-const cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
+// Add lighting
+const ambientLight = new THREE.AmbientLight(0x404040, 0.3);
+scene.add(ambientLight);
+
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+directionalLight.position.set(10, 10, 5);
+directionalLight.castShadow = true;
+directionalLight.shadow.mapSize.width = 2048;
+directionalLight.shadow.mapSize.height = 2048;
+scene.add(directionalLight);
+
+// Add a basic sphere to represent a planet
+const geometry = new THREE.SphereGeometry(1, 32, 32);
+const material = new THREE.MeshLambertMaterial({ color: 0x8888ff });
+const sphere = new THREE.Mesh(geometry, material);
+sphere.castShadow = true;
+sphere.receiveShadow = true;
+scene.add(sphere);
+
+// Add ground plane
+const groundGeometry = new THREE.PlaneGeometry(20, 20);
+const groundMaterial = new THREE.MeshLambertMaterial({ color: 0x333333 });
+const ground = new THREE.Mesh(groundGeometry, groundMaterial);
+ground.rotation.x = -Math.PI / 2;
+ground.position.y = -2;
+ground.receiveShadow = true;
+scene.add(ground);
 
 // Position camera
-camera.position.z = 5;
+camera.position.set(0, 2, 5);
+camera.lookAt(0, 0, 0);
 
 // Animation loop
 function animate() {
   requestAnimationFrame(animate);
   
-  // Rotate the cube
-  cube.rotation.x += 0.01;
-  cube.rotation.y += 0.01;
+  // Rotate the sphere
+  sphere.rotation.y += 0.01;
   
   renderer.render(scene, camera);
 }
