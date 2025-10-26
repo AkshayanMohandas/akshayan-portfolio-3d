@@ -56,6 +56,32 @@ scene.add(ground);
 camera.position.set(0, 2, 5);
 camera.lookAt(0, 0, 0);
 
+// Create particle system
+const particleCount = 1000;
+const particles = new THREE.BufferGeometry();
+const positions = new Float32Array(particleCount * 3);
+
+for (let i = 0; i < particleCount * 3; i++) {
+  positions[i] = (Math.random() - 0.5) * 200;
+}
+
+particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+const particleMaterial = new THREE.PointsMaterial({
+  color: 0x00ffff,
+  size: 0.1,
+  transparent: true,
+  opacity: 0.6
+});
+
+const particleSystem = new THREE.Points(particles, particleMaterial);
+scene.add(particleSystem);
+
+// Add lens flare effect
+const lensFlare = new THREE.LensFlare();
+lensFlare.position.set(10, 10, 5);
+scene.add(lensFlare);
+
 // Load 3D models
 let loadedModels = [];
 
@@ -104,6 +130,9 @@ function animate() {
   loadedModels.forEach(model => {
     model.rotation.y += 0.005;
   });
+  
+  // Animate particles
+  particleSystem.rotation.y += 0.001;
   
   // Camera movement based on mouse
   if (isMouseDown) {
