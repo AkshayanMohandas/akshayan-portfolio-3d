@@ -101,6 +101,22 @@ gltfLoader.load('/src/models/football.glb', (gltf) => {
   loadedModels.push(model);
 });
 
+gltfLoader.load('/src/models/badminton.glb', (gltf) => {
+  const model = gltf.scene;
+  model.position.set(0, 2, 0);
+  model.scale.set(0.2, 0.2, 0.2);
+  scene.add(model);
+  loadedModels.push(model);
+});
+
+gltfLoader.load('/src/models/bowling_ball_and_pin.glb', (gltf) => {
+  const model = gltf.scene;
+  model.position.set(0, -2, 0);
+  model.scale.set(0.4, 0.4, 0.4);
+  scene.add(model);
+  loadedModels.push(model);
+});
+
 // Mouse controls
 let mouseX = 0, mouseY = 0;
 let isMouseDown = false;
