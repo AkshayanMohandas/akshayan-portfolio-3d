@@ -1,8 +1,12 @@
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 // Load texture
 const textureLoader = new THREE.TextureLoader();
 const spaceTexture = textureLoader.load('/src/jsm/space.jpg');
+
+// Load 3D models
+const gltfLoader = new GLTFLoader();
 
 // Basic Three.js scene setup
 const scene = new THREE.Scene();
@@ -52,12 +56,36 @@ scene.add(ground);
 camera.position.set(0, 2, 5);
 camera.lookAt(0, 0, 0);
 
+// Load 3D models
+let loadedModels = [];
+
+gltfLoader.load('/src/models/iron_man.glb', (gltf) => {
+  const model = gltf.scene;
+  model.position.set(2, 0, 0);
+  model.scale.set(0.5, 0.5, 0.5);
+  scene.add(model);
+  loadedModels.push(model);
+});
+
+gltfLoader.load('/src/models/football.glb', (gltf) => {
+  const model = gltf.scene;
+  model.position.set(-2, 0, 0);
+  model.scale.set(0.3, 0.3, 0.3);
+  scene.add(model);
+  loadedModels.push(model);
+});
+
 // Animation loop
 function animate() {
   requestAnimationFrame(animate);
   
   // Rotate the sphere
   sphere.rotation.y += 0.01;
+  
+  // Rotate loaded models
+  loadedModels.forEach(model => {
+    model.rotation.y += 0.005;
+  });
   
   renderer.render(scene, camera);
 }
