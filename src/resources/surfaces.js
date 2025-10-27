@@ -4,7 +4,7 @@ import { scene, manager } from "./world";
 export function simpleText(x, y, z, inputText, fontSize) {
   var text_loader = new THREE.FontLoader();
 
-  text_loader.load("../src/jsm/fonts/Roboto_Regular.json", function (font) {
+  text_loader.load("./src/jsm/fonts/Roboto_Regular.json", function (font) {
     var xMid, text;
 
     var color = 0xffffff;
@@ -43,7 +43,7 @@ export function simpleText(x, y, z, inputText, fontSize) {
 export function leftAlignedText(x, y, z, inputText, fontSize, color = 0xffffff) {
   var text_loader = new THREE.FontLoader();
 
-  text_loader.load("../src/jsm/fonts/Roboto_Regular.json", function (font) {
+  text_loader.load("./src/jsm/fonts/Roboto_Regular.json", function (font) {
     var text;
 
     var matLite = new THREE.MeshBasicMaterial({
