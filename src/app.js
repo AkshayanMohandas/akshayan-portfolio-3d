@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { WEBGL } from './WebGL';
 import * as Ammo from './builds/ammo';
@@ -959,19 +958,19 @@ Ammo().then((Ammo) => {
   }
 
 
-  // Load and create the sci-fi worker model
+  // Load and create the animated astronaut model
   function createSciFiWorker(x, y, z, scale = 1) {
-    const loader = new FBXLoader();
+    const loader = new GLTFLoader();
     
-    loader.load('./src/jsm/stylized-sci-fi-worker-accessories-animated/source/Stylized Sci-fi Worker with accessories.fbx', (fbx) => {
-      const model = fbx;
+    loader.load('./src/models/animated_astronaut_character_in_space_suit_loop.glb', (gltf) => {
+      const model = gltf.scene;
       
       // Position the model
       model.position.set(x, y, z);
       model.scale.setScalar(scale);
       
       // Rotate the model to stand upright (rotate around X-axis)
-      model.rotation.x = -Math.PI / 2; // -90 degrees to make it stand upright
+      model.rotation.x = 0;
       
       // Enable shadows
       model.traverse((child) => {
@@ -985,9 +984,9 @@ Ammo().then((Ammo) => {
       scene.add(model);
       
       // Handle animations if they exist
-      if (fbx.animations && fbx.animations.length > 0) {
+      if (gltf.animations && gltf.animations.length > 0) {
         const mixer = new THREE.AnimationMixer(model);
-        const action = mixer.clipAction(fbx.animations[0]);
+        const action = mixer.clipAction(gltf.animations[0]);
         action.play();
         
         // Store mixer for animation updates
@@ -997,11 +996,11 @@ Ammo().then((Ammo) => {
       // Add physics if needed (optional - comment out if not needed)
       // addRigidPhysics(model, { x: 2, y: 4, z: 2 });
       
-      console.log('Sci-fi worker FBX model loaded successfully');
+      console.log('Animated astronaut GLB model loaded successfully');
     }, (progress) => {
       console.log('Loading progress:', (progress.loaded / progress.total * 100) + '%');
     }, (error) => {
-      console.error('Error loading sci-fi worker FBX model:', error);
+      console.error('Error loading animated astronaut GLB model:', error);
     });
   }
 
@@ -2380,16 +2379,44 @@ Ammo().then((Ammo) => {
 
   // Create 3D arrow button
   function create3DArrow(x, y, z, direction, scale = 1, color = 0x00ff00) {
-    const arrowGeometry = new THREE.ConeGeometry(0.5, 1, 8);
-    const arrowMaterial = new THREE.MeshStandardMaterial({
-      color: color,
-      metalness: 0.8,
-      roughness: 0.2,
-      emissive: color,
-      emissiveIntensity: 0.2
-    });
+    // Create triangular prism using ExtrudeGeometry with beveled edges
+    const triangleShape = new THREE.Shape();
+    triangleShape.moveTo(0, 0.5);      // Top point
+    triangleShape.lineTo(-0.5, -0.5);  // Bottom left
+    triangleShape.lineTo(0.5, -0.5);   // Bottom right
+    triangleShape.lineTo(0, 0.5);      // Back to top
+    
+    const extrudeSettings = {
+      depth: 0.3,        // Thickness of the triangle
+      bevelEnabled: true,
+      bevelThickness: 0.05,  // Bevel thickness for 3D effect
+      bevelSize: 0.02,       // Bevel size for clean edges
+      bevelOffset: 0,
+      bevelSegments: 3,
+      curveSegments: 8
+    };
+    
+    const arrowGeometry = new THREE.ExtrudeGeometry(triangleShape, extrudeSettings);
+    
+    // Use MeshPhongMaterial to match the 3D section title style
+    const arrowMaterials = [
+      new THREE.MeshPhongMaterial({ 
+        color: color,
+        emissive: 0x000000,
+        emissiveIntensity: 0,
+        shininess: 100,
+        specular: 0x222222
+      }), // front
+      new THREE.MeshPhongMaterial({ 
+        color: color,
+        emissive: 0x000000,
+        emissiveIntensity: 0,
+        shininess: 100,
+        specular: 0x222222
+      }), // side
+    ];
 
-    const arrow = new THREE.Mesh(arrowGeometry, arrowMaterial);
+    const arrow = new THREE.Mesh(arrowGeometry, arrowMaterials);
     arrow.position.set(x, y, z);
     arrow.scale.setScalar(scale);
     
@@ -2932,7 +2959,7 @@ Ammo().then((Ammo) => {
 
     
     // Add sci-fi worker model to the ground area near social media logos
-    createSciFiWorker(0, 0, 40, 0.12); // Position at (0, 0, 80) with much smaller scale 1.5
+    createSciFiWorker(0, 0, 40, 7); // Position at (0, 0, 80) with much smaller scale 1.5
     
     // Add manta spaceship model to the ground area
     createMantaSpaceship(-100, 6, -100, 2); // Position at (30, 5, 30) with scale 0.01 - elevated 5 units above ground
