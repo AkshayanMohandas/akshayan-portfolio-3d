@@ -2267,6 +2267,105 @@ Ammo().then((Ammo) => {
     });
   }
 
+  // Load and create the Earth model
+  function createEarth(x, y, z, scale = 1) {
+    const loader = new GLTFLoader();
+    
+    loader.load('./src/models/earth.glb', (gltf) => {
+      const model = gltf.scene;
+      
+      // Position the model on the ground
+      model.position.set(x, y, z);
+      model.scale.setScalar(scale);
+      
+      // Rotate the model to be flat on the ground
+      model.rotation.x = 0; // No rotation around X-axis
+      model.rotation.y = 0; // Face forward
+      model.rotation.z = 0; // No rotation around Z-axis
+      
+      // Enable shadows
+      model.traverse((child) => {
+        if (child.isMesh) {
+          child.castShadow = true;
+          child.receiveShadow = true;
+        }
+      });
+      
+      // Add to scene
+      scene.add(model);
+      
+      // Handle animations if they exist
+      if (gltf.animations && gltf.animations.length > 0) {
+        const mixer = new THREE.AnimationMixer(model);
+        const action = mixer.clipAction(gltf.animations[0]);
+        action.play();
+        
+        // Store mixer for animation updates
+        model.userData.mixer = mixer;
+      }
+      
+      // Add continuous rotation animation
+      model.userData.rotationSpeed = 0.005; // Rotation speed around Y-axis
+      
+      // Add physics for the earth (static object)
+      addRigidPhysics(model, { x: 3, y: 3, z: 3 });
+      
+      console.log('Earth GLB model loaded successfully');
+    }, (progress) => {
+      console.log('Earth loading progress:', (progress.loaded / progress.total * 100) + '%');
+    }, (error) => {
+      console.error('Error loading Earth GLB model:', error);
+    });
+  }
+
+  // Load and create the Dancing Alien model
+  function createDancingAlien(x, y, z, scale = 1) {
+    const loader = new GLTFLoader();
+    
+    loader.load('./src/models/dancing_alien.glb', (gltf) => {
+      const model = gltf.scene;
+      
+      // Position the model on the ground
+      model.position.set(x, y, z);
+      model.scale.setScalar(scale);
+      
+      // Rotate the model to be flat on the ground
+      model.rotation.x = 0; // No rotation around X-axis
+      model.rotation.y = 0; // Face forward
+      model.rotation.z = 0; // No rotation around Z-axis
+      
+      // Enable shadows
+      model.traverse((child) => {
+        if (child.isMesh) {
+          child.castShadow = true;
+          child.receiveShadow = true;
+        }
+      });
+      
+      // Add to scene
+      scene.add(model);
+      
+      // Handle animations if they exist
+      if (gltf.animations && gltf.animations.length > 0) {
+        const mixer = new THREE.AnimationMixer(model);
+        const action = mixer.clipAction(gltf.animations[0]);
+        action.play();
+        
+        // Store mixer for animation updates
+        model.userData.mixer = mixer;
+      }
+      
+      // Add physics for the dancing alien (static object)
+      addRigidPhysics(model, { x: 2, y: 3, z: 2 });
+      
+      console.log('Dancing Alien GLB model loaded successfully');
+    }, (progress) => {
+      console.log('Dancing Alien loading progress:', (progress.loaded / progress.total * 100) + '%');
+    }, (error) => {
+      console.error('Error loading Dancing Alien GLB model:', error);
+    });
+  }
+
   // Create a simple image plane without a box
   function createImagePlane(x, y, z, textureImage, urlLink, width = 4, height = 4, rotation = 0) {
     const loader = new THREE.TextureLoader(manager);
@@ -2631,6 +2730,11 @@ Ammo().then((Ammo) => {
         object.userData.mixer.update(deltaTime);
       }
       
+      // Rotate earth model continuously
+      if (object.userData.rotationSpeed !== undefined) {
+        object.rotation.y += object.userData.rotationSpeed;
+      }
+      
       // Animate waving flags
       if (object.userData.originalVertices && object.userData.waveTime !== undefined) {
         animateWavingFlag(object);
@@ -2977,25 +3081,25 @@ Ammo().then((Ammo) => {
     createLightFighterSpaceship(-93, 5, 12, 2); // Position at (-100, 0, 10) with scale 10 - on the ground
     
     // Add UFO model to the ground area
-    createUFO(90, 10, -90, 0.07); // Position at (90, 10, -90) with scale 0.07
+    // createUFO(90, 20, -90, 0.07); // Position at (90, 10, -90) with scale 0.07
 
     // // Add badminton and Cristiano Ronaldo models close to each other on the ground
-    // createBadminton(87, 0, 70, 7); // Position badminton model
-    // createCristianoRonaldo(73, 6.5, 70, 6.5); // Position Cristiano Ronaldo model close to badminton
-    // createYamahaKeyboard(95, 0, 73, 8); // Yamaha Keyboard
-    // createBowlingBallAndPin(93, 0, 77, 0.01); // Bowling Ball and Pin
-    // createGymWeights(77, 0, 77, 0.05); // Gym Weights
-    // createCricketSet(90, 0.2, 80, 0.07); // Cricket Set
-    // createPlayStation5Set(85, 0, 75, 0.5); // PlayStation 5 Set
-    // createKarom(82, 0, 82, 20); // Karom
-    // createIronMan(80, 0, 62, 5.5); // Iron Man
-    // createAmazingSpiderMan2(68, 0, 78, 5); // Amazing Spider-Man 2
-    // createNissanSkylineGTR(97, 1, 55, 2); // Nissan Skyline GTR R35
-    // createOracleRedBullF1RB19(68, 0, 55, 9); // Oracle Red Bull F1 Car RB19 2023
-    // createClassicGaneshDDO(80, 0, 70, 0.3); // Classic Ganesh DDO Painted
-    // createFootball(90.5, 1.03, 75, 0.02); // Football
-    // createThingHandWednesday(77, -0.7, 80, 5); // Thing Hand from Wednesday Addams
-    // create3DSectionTitle('MY WORLD', 79, 2, 95, 3.0, 3.0);
+    createBadminton(87, 0, 70, 7); // Position badminton model
+    createCristianoRonaldo(73, 6.5, 70, 6.5); // Position Cristiano Ronaldo model close to badminton
+    createYamahaKeyboard(95, 0, 73, 8); // Yamaha Keyboard
+    createBowlingBallAndPin(93, 0, 77, 0.01); // Bowling Ball and Pin
+    createGymWeights(77, 0, 77, 0.05); // Gym Weights
+    createCricketSet(90, 0.2, 80, 0.07); // Cricket Set
+    createPlayStation5Set(85, 0, 75, 0.5); // PlayStation 5 Set
+    createKarom(82, 0, 82, 20); // Karom
+    createIronMan(80, 0, 62, 5.5); // Iron Man
+    createAmazingSpiderMan2(68, 0, 78, 5); // Amazing Spider-Man 2
+    createNissanSkylineGTR(97, 1, 55, 2); // Nissan Skyline GTR R35
+    createOracleRedBullF1RB19(68, 0, 55, 9); // Oracle Red Bull F1 Car RB19 2023
+    createClassicGaneshDDO(80, 0, 70, 0.3); // Classic Ganesh DDO Painted
+    createFootball(90.5, 1.03, 75, 0.02); // Football
+    createThingHandWednesday(77, -0.7, 80, 5); // Thing Hand from Wednesday Addams
+    create3DSectionTitle('MY WORLD', 79, 2, 95, 3.0, 3.0);
 
     // Tools Section
     create3DSectionTitle('SKILLS & TECHNOLOGIES', -68, 2, 75, 3.0, 3.0);
@@ -3004,6 +3108,12 @@ Ammo().then((Ammo) => {
     
     // Add time machine model to the ground area in the specified area (-90, 1, 90, 5)
     createTimeMachine(-70, 0, 60, 2); // Position at (-90, 1, 90) with scale 5
+
+    // Add earth model to the ground
+    createEarth(90, 12, -85, 10); // Position earth model on the ground near the time machine
+
+    // Add dancing alien model to the ground
+    createDancingAlien(33, 0, -113, 8); // Position dancing alien model on the ground
 
     // Create interactive tool carousel instead of multiple overlapping images
     createToolCarousel(-70, 9, 60, 4, 4);
