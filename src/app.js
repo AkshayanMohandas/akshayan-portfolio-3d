@@ -2856,8 +2856,7 @@ Ammo().then((Ammo) => {
 
 
   if (isTouchscreenDevice()) {
-    document.getElementById('appDirections').innerHTML =
-      'Use the joystick in the bottom left to move the ball. Please use your device in portrait orientation!';
+    document.getElementById('appDirections').innerHTML = '';
     createJoystick(document.getElementById('joystick-wrapper'));
     document.getElementById('joystick-wrapper').style.visibility = 'visible';
     document.getElementById('joystick').style.visibility = 'visible';
@@ -2996,29 +2995,29 @@ Ammo().then((Ammo) => {
     createBox(52, 2, 20, 4, 4, 1, boxTexture.ieee, '', 0xFFFFFF, true, true, 0.8);
 
     // Education Section - Right Side - 3D
-    create3DSectionTitle('EDUCATION', 19.3, 2, -113, 3.0, 3.0);
+    create3DSectionTitle('EDUCATION', -0.7, 2, -113, 3.0, 3.0);
     
     // Education 1 - University of Westminster
-    leftAlignedText(8.2, 1.0, -105, 'University of Westminster', 1.2);
-    leftAlignedText(8.2, 0.01, -105, 'University of Westminster', 1.2, 0x1a1a1a);
-    leftAlignedText(8.2, 0.01, -102, 'BEng (Hons) Software Engineering', 1.0);
-    leftAlignedText(8.2, 0.01, -99, 'Sep 2021 – Jun 2024 | London, United Kingdom', 0.8);
-    leftAlignedText(8.2, 0.01, -96, 'Graduated with First Class Honours.', 0.8);
-    leftAlignedText(8.2, 0.01, -93, '', 0.8, 0x1a1a1a);
+    leftAlignedText(-11.5, 1.0, -105, 'University of Westminster', 1.2);
+    leftAlignedText(-11.5, 0.01, -105, 'University of Westminster', 1.2, 0x1a1a1a);
+    leftAlignedText(-11.5, 0.01, -102, 'BEng (Hons) Software Engineering', 1.0);
+    leftAlignedText(-11.5, 0.01, -99, 'Sep 2021 – Jun 2024 | London, United Kingdom', 0.8);
+    leftAlignedText(-11.5, 0.01, -96, 'Graduated with First Class Honours.', 0.8);
+    leftAlignedText(-11.5, 0.01, -93, '', 0.8, 0x1a1a1a);
 
     // Education 2 - Informatics Institute of Technology
-    leftAlignedText(8.2, 1.0, -90, 'Informatics Institute of Technology (IIT Campus)', 1.2);
-    leftAlignedText(8.2, 0.01, -90, 'Informatics Institute of Technology (IIT Campus)', 1.2, 0x1a1a1a);
-    leftAlignedText(8.2, 0.01, -87, 'BEng (Hons) Software Engineering (Affiliated with University of Westminster)', 1.0);
-    leftAlignedText(8.2, 0.01, -84, 'Sep 2021 – Aug 2023 | Colombo, Sri Lanka', 0.8);
-    leftAlignedText(8.2, 0.01, -81, 'Achieved First Class Honours.', 0.8);
-    leftAlignedText(8.2, 0.01, -78, '', 0.8);
+    leftAlignedText(-11.5, 1.0, -90, 'Informatics Institute of Technology (IIT Campus)', 1.2);
+    leftAlignedText(-11.5, 0.01, -90, 'Informatics Institute of Technology (IIT Campus)', 1.2, 0x1a1a1a);
+    leftAlignedText(-11.5, 0.01, -87, 'BEng (Hons) Software Engineering (Affiliated with University of Westminster)', 1.0);
+    leftAlignedText(-11.5, 0.01, -84, 'Sep 2021 – Aug 2023 | Colombo, Sri Lanka', 0.8);
+    leftAlignedText(-11.5, 0.01, -81, 'Achieved First Class Honours.', 0.8);
+    leftAlignedText(-11.5, 0.01, -78, '', 0.8);
 
     // Education 3 - S. Thomas' College
-    leftAlignedText(8.2, 1.0, -75, 'S. Thomas\' College, Mount Lavinia', 1.2);
-    leftAlignedText(8.2, 0.01, -75, 'S. Thomas\' College, Mount Lavinia', 1.2, 0x1a1a1a);
-    leftAlignedText(8.2, 0.01, -72, 'GCE Advanced Level – Physical Science Stream (A/L) | Jan 2018 – Aug 2020 | Grades: A, 2C', 1.0);
-    leftAlignedText(8.2, 0.01, -69, 'GCE Ordinary Level (O/L) | Jan 2007 – Dec 2017 | Grades: 8A, 1B', 1.0);
+    leftAlignedText(-11.5, 1.0, -75, 'S. Thomas\' College, Mount Lavinia', 1.2);
+    leftAlignedText(-11.5, 0.01, -75, 'S. Thomas\' College, Mount Lavinia', 1.2, 0x1a1a1a);
+    leftAlignedText(-11.5, 0.01, -72, 'GCE Advanced Level – Physical Science Stream (A/L) | Jan 2018 – Aug 2020 | Grades: A, 2C', 1.0);
+    leftAlignedText(-11.5, 0.01, -69, 'GCE Ordinary Level (O/L) | Jan 2007 – Dec 2017 | Grades: 8A, 1B', 1.0);
 
     const instagramGradient = 0xE1306C;
     
@@ -3113,7 +3112,7 @@ Ammo().then((Ammo) => {
     createEarth(90, 12, -85, 10); // Position earth model on the ground near the time machine
 
     // Add dancing alien model to the ground
-    createDancingAlien(33, 0, -113, 8); // Position dancing alien model on the ground
+    createDancingAlien(13, 0, -113, 8); // Position dancing alien model on the ground
 
     // Create interactive tool carousel instead of multiple overlapping images
     createToolCarousel(-70, 9, 60, 4, 4);
@@ -3123,13 +3122,13 @@ Ammo().then((Ammo) => {
 
     // Add waving flags for each educational institution
     // University of Westminster flag - positioned at x=54 to align with text
-    createWavingFlag(7, 0, -105, 6, 4, 10, './src/jsm/flags/University of Westminster.png', 'University of Westminster');
+    createWavingFlag(-11.9, 0, -105, 6, 4, 10, './src/jsm/flags/University of Westminster.png', 'University of Westminster');
     
     // Informatics Institute of Technology flag - positioned at x=54 to align with text
-    createWavingFlag(7, 0, -90, 6, 4, 10, './src/jsm/flags/Informatics Institute of Technology.png', 'Informatics Institute of Technology');
+    createWavingFlag(-11.9, 0, -90, 6, 4, 10, './src/jsm/flags/Informatics Institute of Technology.png', 'Informatics Institute of Technology');
     
     // S. Thomas' College flag - positioned at x=54 to align with text
-    createWavingFlag(7, 0, -75, 6, 4, 10, './src/jsm/flags/S.Thomas College.png', 'S. Thomas\' College');
+    createWavingFlag(-11.9, 0, -75, 6, 4, 10, './src/jsm/flags/S.Thomas College.png', 'S. Thomas\' College');
 
     addParticles();
     glowingParticles();

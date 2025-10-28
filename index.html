@@ -55,10 +55,11 @@
       
       <!-- Spaceman image overlay -->
       <img src="./src/jsm/spaceman.png" alt="Spaceman" class="spaceman-overlay" />
-      
+
       <div class="start-page-content-div fadeOutDiv">
         <div id="name-display" class="postload fadeOutDiv"></div>
         <div id="name-display-front" class="postload fadeOutDiv"></div>
+        <h1 id="appDirections" class="start-page-text joystick-directions-text postload fadeOutDiv"></h1>
         <button id="start-button" class="postload fadeOutDiv">Enter Orbit</button>
       </div>
       <div class="trinity-rings-spinner preload">
@@ -74,10 +75,10 @@
 
       void main() {
 
-      	vec4 worldPosition = modelMatrix * vec4( position, 1.0 );
-      	vWorldPosition = worldPosition.xyz;
+        vec4 worldPosition = modelMatrix * vec4( position, 1.0 );
+        vWorldPosition = worldPosition.xyz;
 
-      	gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+        gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
 
       }
     </script>
@@ -93,8 +94,8 @@
 
       void main() {
 
-      	float h = normalize( vWorldPosition + offset ).y;
-      	gl_FragColor = vec4( mix( bottomColor, topColor, max( pow( max( h, 0.0 ), exponent ), 0.0 ) ), 1.0 );
+        float h = normalize( vWorldPosition + offset ).y;
+        gl_FragColor = vec4( mix( bottomColor, topColor, max( pow( max( h, 0.0 ), exponent ), 0.0 ) ), 1.0 );
 
       }
     </script>
