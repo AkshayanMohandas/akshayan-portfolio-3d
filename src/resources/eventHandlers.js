@@ -1,4 +1,5 @@
 // create keyboard control event listeners
+import { createInfoModal } from '../infoModal.js';
 
 export let moveDirection = { left: 0, right: 0, forward: 0, back: 0 };
 export let shouldJump = false;
@@ -6,6 +7,11 @@ export let shouldJump = false;
 export function setupEventHandlers() {
   window.addEventListener("keydown", handleKeyDown, false);
   window.addEventListener("keyup", handleKeyUp, false);
+  
+  // Initialize info modal
+  if (typeof createInfoModal === 'function') {
+    createInfoModal();
+  }
 }
 
 function handleKeyDown(event) {

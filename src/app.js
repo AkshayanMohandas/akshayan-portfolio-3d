@@ -28,11 +28,96 @@ import {
 } from './resources/world';
 import { simpleText, leftAlignedText } from './resources/surfaces';
 import { pickPosition, launchClickPosition, getCanvasRelativePosition, rotateCamera, launchHover, updateHoverAnimations } from './resources/utils';
+import { createInfoModal, openModal } from './infoModal.js';
 
 export let cursorHoverObjects = [];
 
 // Global loading state for coordination
 window.sceneLoadingComplete = false;
+
+// Function to create info icons using GLB model
+function createInfoIcon(x, y, z, infoKey) {
+  const loader = new GLTFLoader();
+  
+  console.log(`Loading info icon for ${infoKey} at position (${x}, ${y}, ${z})`);
+  
+  loader.load('./src/models/highpoly_info_sign_3d_icon.glb', function (gltf) {
+    console.log('GLB model loaded successfully');
+    const model = gltf.scene;
+    
+    // Scale the model to appropriate size
+    model.scale.set(0.3, 0.3, 0.3);
+    
+    // Position the model
+    model.position.set(x, y, z);
+    
+    // Rotate to be flat on the ground like text
+    model.rotation.x = -Math.PI * 0.5;
+    
+    // Set user data for click detection
+    model.userData = { 
+      type: 'infoIcon', 
+      infoKey: infoKey,
+      hoverable: true,
+      hoverScale: 1.2
+    };
+    
+    // Apply user data to all meshes in the model for click detection
+    model.traverse(function (child) {
+      if (child.isMesh) {
+        // Keep original texture and blue color, just ensure it's visible
+        child.material.transparent = true;
+        child.material.opacity = 1;
+        child.material.side = THREE.DoubleSide;
+        
+        // Set user data for click detection
+        child.userData = model.userData;
+        child.castShadow = true;
+        child.receiveShadow = true;
+        
+        console.log(`Applied userData to mesh: ${child.name || 'unnamed'}`);
+      }
+    });
+    
+    // Add to scene
+    scene.add(model);
+    cursorHoverObjects.push(model);
+    
+    // Store reference for potential cleanup
+    model.userData.originalScale = model.scale.clone();
+    
+    console.log(`Info icon ${infoKey} added to scene and cursorHoverObjects`);
+    
+  }, function (progress) {
+    console.log('Loading progress:', (progress.loaded / progress.total * 100) + '%');
+  }, function (error) {
+    console.error('Error loading info icon model:', error);
+    
+    // Fallback to simple circle if model fails to load
+    console.log('Creating fallback circle icon');
+    const geometry = new THREE.CircleGeometry(0.3, 16);
+    const material = new THREE.MeshBasicMaterial({
+      color: 0x4A90E2,
+      transparent: true,
+      opacity: 0.9,
+      side: THREE.DoubleSide
+    });
+    
+    const fallbackIcon = new THREE.Mesh(geometry, material);
+    fallbackIcon.position.set(x, y, z);
+    fallbackIcon.rotation.x = -Math.PI * 0.5;
+    fallbackIcon.userData = { 
+      type: 'infoIcon', 
+      infoKey: infoKey,
+      hoverable: true,
+      hoverScale: 1.2
+    };
+    
+    scene.add(fallbackIcon);
+    cursorHoverObjects.push(fallbackIcon);
+    console.log(`Fallback icon ${infoKey} added to scene`);
+  });
+}
 
 // Mouse drag variables for ball movement
 let isDragging = false;
@@ -2882,48 +2967,64 @@ Ammo().then((Ammo) => {
 
     // Project 1
     leftAlignedText(-80, 1.5, -95, 'Cruise Ship Boarding System', 1.5);
+    // Info icon for Cruise Ship Boarding System
+    createInfoIcon(-76.5, 1.5, -95, 'proj_cruise');
     leftAlignedText(-80, 0.01, -95, 'Cruise Ship Boarding System', 1.5, 0x1a1a1a);
     leftAlignedText(-80, 0.01, -91, 'A Java console program that manages cabin assignments and passenger data for a cruise ship.', 0.8);
     leftAlignedText(-80, 0.01, -89, 'Includes features for adding, viewing, and sorting passengers using a circular queue.', 0.8);
 
     // Project 2
     leftAlignedText(-80, 1.5, -83, 'Skin Consultation Management System', 1.5);
+    // Info icon for Skin Consultation Management System
+    createInfoIcon(-76.5, 1.5, -83, 'proj_skin');
     leftAlignedText(-80, 0.01, -83, 'Skin Consultation Management System', 1.5, 0x1a1a1a);
     leftAlignedText(-80, 0.01, -79, 'A Java application with both console and GUI interfaces to manage doctors, patients, and', 0.8);
     leftAlignedText(-80, 0.01, -77, 'consultations in a dermatology clinic. Features file-based data persistence and encryption.', 0.8);
 
     // Project 3
     leftAlignedText(-80, 1.5, -71, 'Tripper – A Tourism Website', 1.5);
+    // Info icon for Tripper website
+    createInfoIcon(-76.5, 1.5, -71, 'proj_tripper');
     leftAlignedText(-80, 0.01, -71, 'Tripper – A Tourism Website', 1.5, 0x1a1a1a);
     leftAlignedText(-80, 0.01, -67, 'A dynamic web application created using HTML, CSS, and JavaScript that allows users to explore destinations and', 0.8);
     leftAlignedText(-80, 0.01, -65, 'purchase travel-related products. Features engaging UI design and modern front-end development practices.', 0.8);
 
     // Project 4
     leftAlignedText(-80, 1.5, -59, 'Old Asteroids Arcade Game (Formal Specification)', 1.5);
+    // Info icon for Old Asteroids Arcade Game
+    createInfoIcon(-76.5, 1.5, -59, 'proj_asteroids');
     leftAlignedText(-80, 0.01, -59, 'Old Asteroids Arcade Game (Formal Specification)', 1.5, 0x1a1a1a);
     leftAlignedText(-80, 0.01, -55, 'A formal specification project using the B-Method to model and verify a simplified version of the', 0.8);
     leftAlignedText(-80, 0.01, -53, 'classic Asteroids game. Verified using Atelier B and ProB tools.', 0.8);
 
     // Project 5
     leftAlignedText(-80, 1.5, -47, 'Sliding Puzzles – Graph Acyclicity Checker', 1.5);
+    // Info icon for Sliding Puzzles – Graph Acyclicity Checker
+    createInfoIcon(-76.5, 1.5, -47, 'proj_sliding');
     leftAlignedText(-80, 0.01, -47, 'Sliding Puzzles – Graph Acyclicity Checker', 1.5, 0x1a1a1a);
     leftAlignedText(-80, 0.01, -43, 'A Java-based algorithmic project implementing the sink elimination algorithm to determine', 0.8);
     leftAlignedText(-80, 0.01, -41, 'whether a directed graph is acyclic. Handles graph data using adjacency lists.', 0.8);
 
     // Project 6
     leftAlignedText(-80, 1.5, -35, 'Weather Explorer & Tourist Guide App (SwiftUI)', 1.5);
+    // Info icon for Weather Explorer & Tourist Guide App
+    createInfoIcon(-76.5, 1.5, -35, 'proj_weather');
     leftAlignedText(-80, 0.01, -35, 'Weather Explorer & Tourist Guide App (SwiftUI)', 1.5, 0x1a1a1a);
     leftAlignedText(-80, 0.01, -31, 'An iOS app developed with SwiftUI that provides real-time weather updates and interactive tourist', 0.8);
     leftAlignedText(-80, 0.01, -29, 'maps. Integrates OpenWeatherMap API, CoreLocation, and MapKit for dynamic city-based updates.', 0.8);
 
     // Project 7
     leftAlignedText(-80, 1.5, -23, 'Student Progression Outcome Prediction System', 1.5);
+    // Info icon for Student Progression Outcome Prediction System
+    createInfoIcon(-76.5, 1.5, -23, 'proj_progression');
     leftAlignedText(-80, 0.01, -23, 'Student Progression Outcome Prediction System', 1.5, 0x1a1a1a);
     leftAlignedText(-80, 0.01, -19, 'A Python program that determines student progression outcomes based on their module credits.', 0.8);
     leftAlignedText(-80, 0.01, -17, 'Validates user input and calculates results such as "Progress" or "Exclude" with statistical summaries.', 0.8);
 
     // Project 8
     leftAlignedText(-80, 1.5, -11, 'Concurrent Ticketing System', 1.5);
+    // Info icon for Concurrent Ticketing System
+    createInfoIcon(-76.5, 1.5, -11, 'proj_concurrent');
     leftAlignedText(-80, 0.01, -11, 'Concurrent Ticketing System', 1.5, 0x1a1a1a);
     leftAlignedText(-80, 0.01, -7, 'A multithreaded Java application designed to simulate passengers and technicians interacting with a shared', 0.8);
     leftAlignedText(-80, 0.01, -5, 'ticket machine. Built using Finite State Processes (FSP) and verified through the LTSA tool.', 0.8);
@@ -3000,6 +3101,8 @@ Ammo().then((Ammo) => {
     // Education 1 - University of Westminster
     leftAlignedText(-11.5, 1.0, -105, 'University of Westminster', 1.2);
     leftAlignedText(-11.5, 0.01, -105, 'University of Westminster', 1.2, 0x1a1a1a);
+    // Add info icon for University of Westminster
+    createInfoIcon(10, 1.0, -105, 'westminster');
     leftAlignedText(-11.5, 0.01, -102, 'BEng (Hons) Software Engineering', 1.0);
     leftAlignedText(-11.5, 0.01, -99, 'Sep 2021 – Jun 2024 | London, United Kingdom', 0.8);
     leftAlignedText(-11.5, 0.01, -96, 'Graduated with First Class Honours.', 0.8);
@@ -3008,6 +3111,8 @@ Ammo().then((Ammo) => {
     // Education 2 - Informatics Institute of Technology
     leftAlignedText(-11.5, 1.0, -90, 'Informatics Institute of Technology (IIT Campus)', 1.2);
     leftAlignedText(-11.5, 0.01, -90, 'Informatics Institute of Technology (IIT Campus)', 1.2, 0x1a1a1a);
+    // Add info icon for Informatics Institute of Technology
+    createInfoIcon(25, 1.0, -90, 'iit');
     leftAlignedText(-11.5, 0.01, -87, 'BEng (Hons) Software Engineering (Affiliated with University of Westminster)', 1.0);
     leftAlignedText(-11.5, 0.01, -84, 'Sep 2021 – Aug 2023 | Colombo, Sri Lanka', 0.8);
     leftAlignedText(-11.5, 0.01, -81, 'Achieved First Class Honours.', 0.8);
@@ -3016,6 +3121,8 @@ Ammo().then((Ammo) => {
     // Education 3 - S. Thomas' College
     leftAlignedText(-11.5, 1.0, -75, 'S. Thomas\' College, Mount Lavinia', 1.2);
     leftAlignedText(-11.5, 0.01, -75, 'S. Thomas\' College, Mount Lavinia', 1.2, 0x1a1a1a);
+    // Add info icon for S. Thomas' College
+    createInfoIcon(15, 1.0, -75, 'stc');
     leftAlignedText(-11.5, 0.01, -72, 'GCE Advanced Level – Physical Science Stream (A/L) | Jan 2018 – Aug 2020 | Grades: A, 2C', 1.0);
     leftAlignedText(-11.5, 0.01, -69, 'GCE Ordinary Level (O/L) | Jan 2007 – Dec 2017 | Grades: 8A, 1B', 1.0);
 
@@ -3083,22 +3190,22 @@ Ammo().then((Ammo) => {
     // createUFO(90, 20, -90, 0.07); // Position at (90, 10, -90) with scale 0.07
 
     // // Add badminton and Cristiano Ronaldo models close to each other on the ground
-    createBadminton(87, 0, 70, 7); // Position badminton model
-    createCristianoRonaldo(73, 6.5, 70, 6.5); // Position Cristiano Ronaldo model close to badminton
-    createYamahaKeyboard(95, 0, 73, 8); // Yamaha Keyboard
-    createBowlingBallAndPin(93, 0, 77, 0.01); // Bowling Ball and Pin
-    createGymWeights(77, 0, 77, 0.05); // Gym Weights
-    createCricketSet(90, 0.2, 80, 0.07); // Cricket Set
-    createPlayStation5Set(85, 0, 75, 0.5); // PlayStation 5 Set
-    createKarom(82, 0, 82, 20); // Karom
-    createIronMan(80, 0, 62, 5.5); // Iron Man
-    createAmazingSpiderMan2(68, 0, 78, 5); // Amazing Spider-Man 2
-    createNissanSkylineGTR(97, 1, 55, 2); // Nissan Skyline GTR R35
-    createOracleRedBullF1RB19(68, 0, 55, 9); // Oracle Red Bull F1 Car RB19 2023
-    createClassicGaneshDDO(80, 0, 70, 0.3); // Classic Ganesh DDO Painted
-    createFootball(90.5, 1.03, 75, 0.02); // Football
-    createThingHandWednesday(77, -0.7, 80, 5); // Thing Hand from Wednesday Addams
-    create3DSectionTitle('MY WORLD', 79, 2, 95, 3.0, 3.0);
+    // createBadminton(87, 0, 70, 7); // Position badminton model
+    // createCristianoRonaldo(73, 6.5, 70, 6.5); // Position Cristiano Ronaldo model close to badminton
+    // createYamahaKeyboard(95, 0, 73, 8); // Yamaha Keyboard
+    // createBowlingBallAndPin(93, 0, 77, 0.01); // Bowling Ball and Pin
+    // createGymWeights(77, 0, 77, 0.05); // Gym Weights
+    // createCricketSet(90, 0.2, 80, 0.07); // Cricket Set
+    // createPlayStation5Set(85, 0, 75, 0.5); // PlayStation 5 Set
+    // createKarom(82, 0, 82, 20); // Karom
+    // createIronMan(80, 0, 62, 5.5); // Iron Man
+    // createAmazingSpiderMan2(68, 0, 78, 5); // Amazing Spider-Man 2
+    // createNissanSkylineGTR(97, 1, 55, 2); // Nissan Skyline GTR R35
+    // createOracleRedBullF1RB19(68, 0, 55, 9); // Oracle Red Bull F1 Car RB19 2023
+    // createClassicGaneshDDO(80, 0, 70, 0.3); // Classic Ganesh DDO Painted
+    // createFootball(90.5, 1.03, 75, 0.02); // Football
+    // createThingHandWednesday(77, -0.7, 80, 5); // Thing Hand from Wednesday Addams
+    // create3DSectionTitle('MY WORLD', 79, 2, 95, 3.0, 3.0);
 
     // Tools Section
     create3DSectionTitle('SKILLS & TECHNOLOGIES', -68, 2, 75, 3.0, 3.0);
@@ -3136,6 +3243,10 @@ Ammo().then((Ammo) => {
 
     setupEventHandlers();
     // window.addEventListener('mousemove', onDocumentMouseMove, false);
+    
+    // Make openModal function globally available
+    window.openModal = openModal;
+    
     renderFrame();
   }
 

@@ -132,6 +132,15 @@ export function launchClickPosition(event) {
       return;
     }
     
+    // Check for info icon clicks
+    if (pickedObject.userData.type === 'infoIcon' && pickedObject.userData.infoKey) {
+      console.log(`Info icon clicked: ${pickedObject.userData.infoKey}`);
+      if (window.openModal) {
+        window.openModal(pickedObject.userData.infoKey);
+      }
+      return;
+    }
+    
     // Check for URL links
     if (intersectedObjects[0].object.userData.URL)
       window.open(intersectedObjects[0].object.userData.URL);
