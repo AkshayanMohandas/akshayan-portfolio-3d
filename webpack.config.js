@@ -35,6 +35,14 @@ module.exports = {
     port: 8080,
     host: '0.0.0.0',
     disableHostCheck: true,
+    // Prevent page auto-refreshes due to editor/git touching files
+    liveReload: false,
+    hot: false,
+    watchOptions: {
+      ignored: [/node_modules/, /\.git/, /build/],
+      aggregateTimeout: 300,
+      poll: undefined,
+    },
   },
   node: {
     fs: 'empty',

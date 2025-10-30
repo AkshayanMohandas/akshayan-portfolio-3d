@@ -3046,6 +3046,8 @@ Ammo().then((Ammo) => {
     
     // Experience 1 - Technical Lead at Mana Medical
     leftAlignedText(55, 1.5, -40, 'Technical Lead — Mana Medical', 1.2);
+    // Info icon for Technical Lead — Mana Medical
+    createInfoIcon(58.5, 1.5, -40, 'exp_mana');
     leftAlignedText(55, 0.01, -40, 'Technical Lead — Mana Medical', 1.2, 0x1a1a1a);
     leftAlignedText(55, 0.01, -37, 'Jan 2025 – Present | London, UK (Hybrid)', 1.0);
     leftAlignedText(55, 0.01, -34, 'Leading mobile application development using React Native and full-stack technologies.', 0.8);
@@ -3053,6 +3055,8 @@ Ammo().then((Ammo) => {
 
     // Experience 2 - Full-stack Developer at University of Westminster
     leftAlignedText(55, 1.5, -25, 'Full-stack Developer — University of Westminster', 1.2);
+    // Info icon for Full-stack Developer — University of Westminster
+    createInfoIcon(58.5, 1.5, -25, 'exp_westminster_dev');
     leftAlignedText(55, 0.01, -25, 'Full-stack Developer — University of Westminster', 1.2, 0x1a1a1a);
     leftAlignedText(55, 0.01, -22, 'Feb 2024 – May 2024 | London, UK (Hybrid)', 1.0);
     leftAlignedText(55, 0.01, -19, 'Developed and maintained Django-based web applications. Improved RoomView\'s front-end', 0.8);
@@ -3060,6 +3064,8 @@ Ammo().then((Ammo) => {
 
     // Experience 3 - Software Quality Assurance Engineer at Dataintics
     leftAlignedText(55, 1.5, -10, 'Software Quality Assurance Engineer (Intern) — Dataintics', 1.2);
+    // Info icon for Software QA Engineer — Dataintics
+    createInfoIcon(58.5, 1.5, -10, 'exp_dataintics');
     leftAlignedText(55, 0.01, -10, 'Software Quality Assurance Engineer (Intern) — Dataintics', 1.2, 0x1a1a1a);
     leftAlignedText(55, 0.01, -7, 'May 2023 – Jul 2023 | Colombo, Sri Lanka (On-site)', 1.0);
     leftAlignedText(55, 0.01, -4, 'Performed quality assurance testing for the KoverUI insurance platform, ensuring', 0.8);
@@ -3067,6 +3073,8 @@ Ammo().then((Ammo) => {
 
     // Experience 4 - Editor at Students' Union
     leftAlignedText(55, 1.5, 5, 'Editor – Students\' Union 2022/23 — Informatics Institute of Technology', 1.2);
+    // Info icon for Editor — Students' Union
+    createInfoIcon(58.5, 1.5, 5, 'exp_editor_su');
     leftAlignedText(55, 0.01, 5, 'Editor – Students\' Union 2022/23 — Informatics Institute of Technology', 1.2, 0x1a1a1a);
     leftAlignedText(55, 0.01, 8, 'Oct 2022 – Sep 2023 | Colombo, Sri Lanka (On-site)', 1.0);
     leftAlignedText(55, 0.01, 11, 'Created and edited promotional materials for student events. Collaborated on marketing', 0.8);
@@ -3074,6 +3082,8 @@ Ammo().then((Ammo) => {
 
     // Experience 5 - Director of Members at IEEE
     leftAlignedText(55, 1.5, 20, 'Director of Members — IEEE Student Branch, Informatics Institute of Technology', 1.2);
+    // Info icon for Director of Members — IEEE
+    createInfoIcon(58.5, 1.5, 20, 'exp_ieee_director');
     leftAlignedText(55, 0.01, 20, 'Director of Members — IEEE Student Branch, Informatics Institute of Technology', 1.2, 0x1a1a1a);
     leftAlignedText(55, 0.01, 23, 'Sep 2022 – Aug 2023 | Colombo, Sri Lanka (On-site)', 1.0);
     leftAlignedText(55, 0.01, 26, 'Led membership drives, improved volunteer engagement, and promoted IEEE initiatives', 0.8);

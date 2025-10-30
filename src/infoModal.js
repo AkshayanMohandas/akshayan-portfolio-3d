@@ -2,105 +2,135 @@
 // Space-themed modal with unique content for each education entry
 
 export const educationInfoContent = {
-    westminster: {
-      title: "University of Westminster",
-      content: `
-        <div class="modal-content-space">
-          <h3 class="modal-title">🎓 University of Westminster</h3>
-          <div class="modal-body">
-            <p class="modal-text">Located in the heart of London, University of Westminster is one of the UK's leading universities for technology and engineering education.</p>
-            
-            <div class="info-section">
-              <h4 class="info-subtitle">🌟 Key Highlights:</h4>
-              <ul class="info-list">
-                <li>BEng (Hons) Software Engineering</li>
-                <li>First Class Honours Graduate</li>
-                <li>London-based learning experience</li>
-                <li>Industry-relevant curriculum</li>
-                <li>Access to cutting-edge technology labs</li>
-              </ul>
-            </div>
-            
-            <div class="info-section">
-              <h4 class="info-subtitle">🚀 Academic Journey:</h4>
-              <p class="modal-text">Completed the final year of my Software Engineering degree at Westminster, focusing on advanced software development, project management, and real-world industry applications.</p>
-            </div>
-            
-            <div class="info-section">
-              <h4 class="info-subtitle">🌍 Location:</h4>
-              <p class="modal-text">London, United Kingdom - A global tech hub providing exposure to international companies and diverse learning opportunities.</p>
-            </div>
+  westminster: {
+    title: "University of Westminster",
+    content: `
+      <div class="modal-content-space">
+        <h3 class="modal-title">🎓 University of Westminster</h3>
+        <div class="modal-body">
+          <p class="modal-text">
+            The <strong>University of Westminster</strong>, located in the heart of London, is globally recognized for its focus on technology, innovation, and real-world learning. Completing my final year here was a defining chapter in my Software Engineering journey.
+          </p>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">🌟 Key Highlights</h4>
+            <ul class="info-list">
+              <li>Graduated with <strong>First Class Honours in BEng (Hons) Software Engineering (2024)</strong></li>
+              <li>Ranked among the <strong>Top 15 Students</strong> – scored <strong>90 marks</strong> for Final Year Project</li>
+              <li><strong>Student Digital Ambassador</strong> – contributed to the <strong>RoomView web application</strong></li>
+              <li>Mentorship and leadership opportunities enhancing communication and collaboration</li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">🚀 Academic Experience</h4>
+            <ul class="info-list">
+              <li>Focused on advanced programming, software design, and scalable system architecture</li>
+              <li>Developed strong analytical, problem-solving, and project management abilities</li>
+              <li>Delivered end-to-end software solutions using modern frameworks and tools</li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">💡 Achievements & Skills</h4>
+            <ul class="info-list">
+              <li>Proficient in <strong>JavaScript, React, Node.js, Java, Python, SQL</strong></li>
+              <li>Experience with <strong>API design, cloud deployment, and full-stack development</strong></li>
+              <li>Strong teamwork and leadership through mentoring and ambassador roles</li>
+            </ul>
           </div>
         </div>
-      `
-    },
-    
-    iit: {
-      title: "Informatics Institute of Technology",
-      content: `
-        <div class="modal-content-space">
-          <h3 class="modal-title">🎓 Informatics Institute of Technology (IIT)</h3>
-          <div class="modal-body">
-            <p class="modal-text">Sri Lanka's premier private higher education institution, affiliated with the University of Westminster, specializing in computing and technology education.</p>
-            
-            <div class="info-section">
-              <h4 class="info-subtitle">🌟 Key Highlights:</h4>
-              <ul class="info-list">
-                <li>BEng (Hons) Software Engineering</li>
-                <li>Affiliated with University of Westminster</li>
-                <li>First Class Honours Achievement</li>
-                <li>Comprehensive 2-year program</li>
-                <li>Industry-focused curriculum</li>
-              </ul>
-            </div>
-            
-            <div class="info-section">
-              <h4 class="info-subtitle">🚀 Academic Journey:</h4>
-              <p class="modal-text">Completed the first two years of my Software Engineering degree at IIT, building a strong foundation in programming, software design, and computer science fundamentals.</p>
-            </div>
-            
-            <div class="info-section">
-              <h4 class="info-subtitle">🌍 Location:</h4>
-              <p class="modal-text">Colombo, Sri Lanka - A vibrant tech ecosystem with growing opportunities in software development and digital innovation.</p>
-            </div>
+      </div>
+    `
+  },
+
+  iit: {
+    title: "Informatics Institute of Technology",
+    content: `
+      <div class="modal-content-space">
+        <h3 class="modal-title">🎓 Informatics Institute of Technology (IIT)</h3>
+        <div class="modal-body">
+          <p class="modal-text">
+            The <strong>Informatics Institute of Technology (IIT)</strong> in Colombo, affiliated with the University of Westminster (UK), provided a strong academic and professional foundation in software engineering. It’s where I built my technical core and developed as a leader.
+          </p>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">🌟 Key Highlights</h4>
+            <ul class="info-list">
+              <li>Completed Levels 4 & 5 with <strong>84.67%</strong> and <strong>82.67%</strong> averages</li>
+              <li>Focused on programming, algorithms, data structures, and database management</li>
+              <li>Held leadership roles — <strong>Director of Members (IEEE)</strong> & <strong>Editor (Students’ Union)</strong></li>
+              <li>Currently mentoring IIT students in software development and career skills</li>
+              <li>Developed and deployed multiple full-stack projects using modern technologies</li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">🚀 Academic Journey</h4>
+            <ul class="info-list">
+              <li>Built strong foundations in OOP, UI/UX design, data analytics, and system design</li>
+              <li>Collaborated in cross-functional teams to create high-quality software solutions</li>
+              <li>Gained practical insight into real-world engineering workflows</li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">💡 Leadership & Technical Growth</h4>
+            <ul class="info-list">
+              <li>Led recruitment drives and managed communication for 100+ IEEE members</li>
+              <li>Designed promotional materials and event branding as Students’ Union Editor</li>
+              <li>Enhanced public speaking, mentorship, and coordination skills</li>
+            </ul>
           </div>
         </div>
-      `
-    },
-    
-    stc: {
-      title: "S. Thomas' College",
-      content: `
-        <div class="modal-content-space">
-          <h3 class="modal-title">🎓 S. Thomas' College, Mount Lavinia</h3>
-          <div class="modal-body">
-            <p class="modal-text">One of Sri Lanka's most prestigious schools, known for academic excellence and producing leaders in various fields including technology and engineering.</p>
-            
-            <div class="info-section">
-              <h4 class="info-subtitle">🌟 Academic Achievements:</h4>
-              <ul class="info-list">
-                <li>GCE Advanced Level (A/L) - Physical Science Stream</li>
-                <li>Grades: A, 2C (2018-2020)</li>
-                <li>GCE Ordinary Level (O/L)</li>
-                <li>Grades: 8A, 1B (2007-2017)</li>
-                <li>Strong foundation in Mathematics & Science</li>
-              </ul>
-            </div>
-            
-            <div class="info-section">
-              <h4 class="info-subtitle">🚀 Educational Foundation:</h4>
-              <p class="modal-text">Built a solid academic foundation in mathematics, physics, and chemistry during A/Ls, which provided the perfect groundwork for pursuing software engineering at university level.</p>
-            </div>
-            
-            <div class="info-section">
-              <h4 class="info-subtitle">🌍 Location:</h4>
-              <p class="modal-text">Mount Lavinia, Sri Lanka - A historic coastal town known for its educational institutions and cultural heritage.</p>
-            </div>
+      </div>
+    `
+  },
+
+  stc: {
+    title: "S. Thomas' College",
+    content: `
+      <div class="modal-content-space">
+        <h3 class="modal-title">🎓 S. Thomas' College, Mount Lavinia</h3>
+        <div class="modal-body">
+          <p class="modal-text">
+            <strong>S. Thomas’ College, Mount Lavinia</strong> is one of Sri Lanka’s most prestigious schools, renowned for fostering academic excellence, leadership, and creativity. My years here instilled discipline, curiosity, and a lifelong drive to learn.
+          </p>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">🌟 Key Highlights</h4>
+            <ul class="info-list">
+              <li><strong>GCE Advanced Level (Physical Science):</strong> A, 2C (2018–2020)</li>
+              <li><strong>GCE Ordinary Level:</strong> 8A, 1B (2007–2017)</li>
+              <li><strong>Editor</strong> – Hindu Students’ Union & Tamil Drama Society</li>
+              <li><strong>Secretary</strong> – Junior Maths Society</li>
+              <li>Developed early leadership, communication, and teamwork abilities</li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">🚀 Academic Foundation</h4>
+            <ul class="info-list">
+              <li>Excelled in mathematics, physics, and logical reasoning</li>
+              <li>Gained analytical problem-solving skills crucial for engineering</li>
+              <li>Built a habit of continuous learning and curiosity-driven growth</li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">💡 Early Talent Development</h4>
+            <ul class="info-list">
+              <li>Discovered a passion for technology and creativity through academics & clubs</li>
+              <li>Organized and led school-level competitions and editorial projects</li>
+              <li>Learned to blend analytical thinking with creative communication</li>
+              <li>Developed the foundation for leadership and professional growth</li>
+            </ul>
           </div>
         </div>
-      `
-    }
-  };
+      </div>
+    `
+  }
+};
   
 // Project info content
 export const projectInfoContent = {
@@ -406,6 +436,214 @@ export const projectInfoContent = {
   }
 };
 
+// Experience info content
+export const experienceInfoContent = {
+  exp_mana: {
+    title: "Technical Lead — Mana Medical",
+    content: `
+      <div class="modal-content-space">
+        <h3 class="modal-title">Technical Lead — Mana Medical</h3>
+        <div class="modal-body">
+          
+          <div class="info-section">
+            <h4 class="info-subtitle">📅 Duration</h4>
+            <ul class="info-list">
+              <li>Jan 2025 – Present</li>
+            </ul>
+          </div>
+          
+          <div class="info-section">
+            <h4 class="info-subtitle">🌐 Organisation Mission</h4>
+            <ul class="info-list">
+              <li>Mana Medical is a UK-based health-tech startup focused on wearable-powered self-management for rheumatic conditions.</li>
+              <li>The platform combines wearable data, patient-reported outcomes, and machine learning to deliver personalised activity insights—redefining chronic disease monitoring.</li>
+              <li>Founded in 2023 and actively developing its MVP and clinical partnerships to empower patients through digital health innovation.</li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">🚀 Role & Impact</h4>
+            <ul class="info-list">
+              <li>Leading full-stack architecture and mobile development using React Native and Node.js for the company’s core health platform.</li>
+              <li>Defined engineering standards, code reviews, CI/CD pipelines, and automated testing for efficient, scalable development.</li>
+              <li>Bridging product, clinical, and data science teams—translating wearable data into actionable user journeys and feature flows.</li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">💡 Technical Growth & Outcomes</h4>
+            <ul class="info-list">
+              <li>Built live-data pipelines integrating wearables and symptom tracking into actionable health insights for patients.</li>
+              <li>Developed secure and scalable cloud infrastructure for real-time analytics and privacy-compliant data storage.</li>
+              <li>Strengthened leadership, technical ownership, and product thinking in the digital health domain.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    `
+  },
+
+  exp_westminster_dev: {
+    title: "Full-stack Developer — University of Westminster (LIDE)",
+    content: `
+      <div class="modal-content-space">
+        <h3 class="modal-title">Full-stack Developer — University of Westminster (LIDE)</h3>
+        <div class="modal-body">
+
+          <div class="info-section">
+            <h4 class="info-subtitle">📅 Duration</h4>
+            <ul class="info-list">
+              <li>Feb 2024 – May 2024</li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">🏫 Organisation Context</h4>
+            <ul class="info-list">
+              <li>The Learning Innovation and Digital Engagement (LIDE) team supports Westminster’s digital transformation through educational technology and e-learning solutions.</li>
+              <li>Focused on enhancing virtual learning environments, lecture capture systems, and digital pedagogy for hybrid learning.</li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">🔧 Role & Contributions</h4>
+            <ul class="info-list">
+              <li>Enhanced the “RoomView” web application — modernised the front-end (HTML, CSS, JS) and improved user group management.</li>
+              <li>Contributed to Django backend updates and deployed code improvements that increased reliability and performance.</li>
+              <li>Created clear documentation and deployment guides, ensuring smooth maintenance and future scalability.</li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">💡 Skills & Outcomes</h4>
+            <ul class="info-list">
+              <li>Advanced proficiency in Django, Python, and front-end frameworks.</li>
+              <li>Improved agile collaboration and communication with non-technical stakeholders.</li>
+              <li>Delivered production-ready code with measurable improvements to accessibility and UX.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    `
+  },
+
+  exp_dataintics: {
+    title: "Software QA Engineer (Intern) — Dataintics",
+    content: `
+      <div class="modal-content-space">
+        <h3 class="modal-title">Software QA Engineer (Intern) — Dataintics</h3>
+        <div class="modal-body">
+
+          <div class="info-section">
+            <h4 class="info-subtitle">📅 Duration</h4>
+            <ul class="info-list">
+              <li>May 2023 – Jul 2023</li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">🏢 Organisation Overview</h4>
+            <ul class="info-list">
+              <li>Dataintics (Pvt) Ltd is a Sri Lankan software company specialising in data-driven enterprise solutions across InsurTech and FinTech sectors.</li>
+              <li>The company’s key product, “KoverUI,” streamlines insurance workflows through automation and quality assurance systems.</li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">🛠 Role & Contributions</h4>
+            <ul class="info-list">
+              <li>Designed and executed regression and smoke test suites for KoverUI to ensure product reliability and accuracy.</li>
+              <li>Collaborated with developers to identify, log, and verify bug fixes, improving test coverage and system stability.</li>
+              <li>Worked within agile QA workflows and documentation processes to maintain consistency across releases.</li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">💡 Skills & Outcomes</h4>
+            <ul class="info-list">
+              <li>Developed core QA skills: test-case creation, bug lifecycle management, regression validation.</li>
+              <li>Gained enterprise-level experience in software quality assurance and cross-functional collaboration.</li>
+              <li>Recognised for teamwork, integrity, and communication by management and peers.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    `
+  },
+
+  exp_editor_su: {
+    title: "Editor — Students' Union 2022/23 (IIT)",
+    content: `
+      <div class="modal-content-space">
+        <h3 class="modal-title">Editor — Students' Union 2022/23 (IIT)</h3>
+        <div class="modal-body">
+
+          <div class="info-section">
+            <h4 class="info-subtitle">📅 Duration</h4>
+            <ul class="info-list">
+              <li>Oct 2022 – Sep 2023</li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">📝 Role & Scope</h4>
+            <ul class="info-list">
+              <li>Designed and edited promotional content and event materials for IIT’s student community.</li>
+              <li>Worked with organisers to ensure consistent branding and effective marketing communication across campus.</li>
+              <li>Managed multiple creative projects simultaneously, ensuring timely delivery under pressure.</li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">💡 Skills & Growth</h4>
+            <ul class="info-list">
+              <li>Improved design and marketing communication skills using Adobe Illustrator and Canva.</li>
+              <li>Strengthened project coordination, visual storytelling, and collaboration with multidisciplinary teams.</li>
+              <li>Contributed to student engagement through creativity and consistent branding strategies.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    `
+  },
+
+  exp_ieee_director: {
+    title: "Director of Members — IEEE Student Branch, IIT",
+    content: `
+      <div class="modal-content-space">
+        <h3 class="modal-title">Director of Members — IEEE Student Branch, IIT</h3>
+        <div class="modal-body">
+
+          <div class="info-section">
+            <h4 class="info-subtitle">📅 Duration</h4>
+            <ul class="info-list">
+              <li>Sep 2022 – Aug 2023</li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">🔧 Leadership & Initiatives</h4>
+            <ul class="info-list">
+              <li>Led membership drives, volunteer onboarding, and engagement campaigns for the IEEE Student Branch at IIT.</li>
+              <li>Promoted IEEE activities and benefits through workshops, newsletters, and social events.</li>
+              <li>Co-organised the “Aquathon” mini-hackathon, helping first-year students gain hands-on coding experience.</li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">💡 Skills & Outcomes</h4>
+            <ul class="info-list">
+              <li>Gained leadership experience managing teams and mentoring junior members.</li>
+              <li>Developed public speaking, event planning, and community-building abilities.</li>
+              <li>Enhanced problem-solving and cross-functional collaboration through student tech initiatives.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    `
+  }
+};
+
   // Modal functionality
   export function createInfoModal() {
     // Create modal HTML structure
@@ -464,7 +702,7 @@ export function openModal(contentKey) {
     const modal = document.getElementById('infoModal');
     const modalContent = document.getElementById('modalContent');
     
-  const registry = { ...educationInfoContent, ...projectInfoContent };
+  const registry = { ...educationInfoContent, ...projectInfoContent, ...experienceInfoContent };
 
   if (registry[contentKey]) {
     modalContent.innerHTML = registry[contentKey].content;
