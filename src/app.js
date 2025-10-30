@@ -3031,12 +3031,16 @@ Ammo().then((Ammo) => {
 
     // Project 9
     leftAlignedText(-80, 1.5, 1, 'Cricozy - Cricket Coaching Platform', 1.5);
+    // Info icon for Cricozy - Cricket Coaching Platform
+    createInfoIcon(-76.5, 1.5, 1, 'proj_cricozy');
     leftAlignedText(-80, 0.01, 1, 'Cricozy - Cricket Coaching Platform', 1.5, 0x1a1a1a);
     leftAlignedText(-80, 0.01, 5, 'A cross-platform app built with Flutter, Python, and Firebase that delivers smart, personalized cricket', 0.8);
     leftAlignedText(-80, 0.01, 7, 'coaching. Uses machine learning to analyze player performance and enhance training.', 0.8);
 
     // Project 10
     leftAlignedText(-80, 1.5, 13, 'EpiDerm – Skin Disease Detection System', 1.5);
+    // Info icon for EpiDerm – Skin Disease Detection System
+    createInfoIcon(-76.5, 1.5, 13, 'proj_epiderm');
     leftAlignedText(-80, 0.01, 13, 'EpiDerm – Skin Disease Detection System', 1.5, 0x1a1a1a);
     leftAlignedText(-80, 0.01, 17, 'AI-powered mobile app that detects skin diseases from images.', 0.8);
     leftAlignedText(-80, 0.01, 19, 'Built with React, Firebase, and machine learning for fast, accurate results.', 0.8);
@@ -3072,19 +3076,19 @@ Ammo().then((Ammo) => {
     leftAlignedText(55, 0.01, -1, 'software reliability and functionality.', 0.8);
 
     // Experience 4 - Editor at Students' Union
-    leftAlignedText(55, 1.5, 5, 'Editor – Students\' Union 2022/23 — Informatics Institute of Technology', 1.2);
+    leftAlignedText(55, 1.5, 5, 'Editor – Students\' Union 2022/23 — IIT', 1.2);
     // Info icon for Editor — Students' Union
     createInfoIcon(58.5, 1.5, 5, 'exp_editor_su');
-    leftAlignedText(55, 0.01, 5, 'Editor – Students\' Union 2022/23 — Informatics Institute of Technology', 1.2, 0x1a1a1a);
+    leftAlignedText(55, 0.01, 5, 'Editor – Students\' Union 2022/23 — IIT', 1.2, 0x1a1a1a);
     leftAlignedText(55, 0.01, 8, 'Oct 2022 – Sep 2023 | Colombo, Sri Lanka (On-site)', 1.0);
     leftAlignedText(55, 0.01, 11, 'Created and edited promotional materials for student events. Collaborated on marketing', 0.8);
     leftAlignedText(55, 0.01, 14, 'content and managed multiple design projects under tight deadlines.', 0.8);
 
     // Experience 5 - Director of Members at IEEE
-    leftAlignedText(55, 1.5, 20, 'Director of Members — IEEE Student Branch, Informatics Institute of Technology', 1.2);
+    leftAlignedText(55, 1.5, 20, 'Director of Members — IEEE Student Branch, IIT', 1.2);
     // Info icon for Director of Members — IEEE
     createInfoIcon(58.5, 1.5, 20, 'exp_ieee_director');
-    leftAlignedText(55, 0.01, 20, 'Director of Members — IEEE Student Branch, Informatics Institute of Technology', 1.2, 0x1a1a1a);
+    leftAlignedText(55, 0.01, 20, 'Director of Members — IEEE Student Branch, IIT', 1.2, 0x1a1a1a);
     leftAlignedText(55, 0.01, 23, 'Sep 2022 – Aug 2023 | Colombo, Sri Lanka (On-site)', 1.0);
     leftAlignedText(55, 0.01, 26, 'Led membership drives, improved volunteer engagement, and promoted IEEE initiatives', 0.8);
     leftAlignedText(55, 0.01, 29, 'through effective communication and leadership.', 0.8);

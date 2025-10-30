@@ -8,9 +8,12 @@ export const educationInfoContent = {
       <div class="modal-content-space">
         <h3 class="modal-title">🎓 University of Westminster</h3>
         <div class="modal-body">
-          <p class="modal-text">
-            The <strong>University of Westminster</strong>, located in the heart of London, is globally recognized for its focus on technology, innovation, and real-world learning. Completing my final year here was a defining chapter in my Software Engineering journey.
-          </p>
+          <div class="info-section">
+            <h4 class="info-subtitle">📖 Overview</h4>
+            <ul class="info-list">
+              <li>The <strong>University of Westminster</strong>, located in the heart of London, is globally recognized for its focus on technology, innovation, and real-world learning. Completing my final year here was a defining chapter in my Software Engineering journey.</li>
+            </ul>
+          </div>
 
           <div class="info-section">
             <h4 class="info-subtitle">🌟 Key Highlights</h4>
@@ -50,9 +53,12 @@ export const educationInfoContent = {
       <div class="modal-content-space">
         <h3 class="modal-title">🎓 Informatics Institute of Technology (IIT)</h3>
         <div class="modal-body">
-          <p class="modal-text">
-            The <strong>Informatics Institute of Technology (IIT)</strong> in Colombo, affiliated with the University of Westminster (UK), provided a strong academic and professional foundation in software engineering. It’s where I built my technical core and developed as a leader.
-          </p>
+          <div class="info-section">
+            <h4 class="info-subtitle">📖 Overview</h4>
+            <ul class="info-list">
+              <li>The <strong>Informatics Institute of Technology (IIT)</strong> in Colombo, affiliated with the University of Westminster (UK), provided a strong academic and professional foundation in software engineering. It’s where I built my technical core and developed as a leader.</li>
+            </ul>
+          </div>
 
           <div class="info-section">
             <h4 class="info-subtitle">🌟 Key Highlights</h4>
@@ -93,9 +99,12 @@ export const educationInfoContent = {
       <div class="modal-content-space">
         <h3 class="modal-title">🎓 S. Thomas' College, Mount Lavinia</h3>
         <div class="modal-body">
-          <p class="modal-text">
-            <strong>S. Thomas’ College, Mount Lavinia</strong> is one of Sri Lanka’s most prestigious schools, renowned for fostering academic excellence, leadership, and creativity. My years here instilled discipline, curiosity, and a lifelong drive to learn.
-          </p>
+          <div class="info-section">
+            <h4 class="info-subtitle">📖 Overview</h4>
+            <ul class="info-list">
+              <li><strong>S. Thomas’ College, Mount Lavinia</strong> is one of Sri Lanka’s most prestigious schools, renowned for fostering academic excellence, leadership, and creativity. My years here instilled discipline, curiosity, and a lifelong drive to learn.</li>
+            </ul>
+          </div>
 
           <div class="info-section">
             <h4 class="info-subtitle">🌟 Key Highlights</h4>
@@ -129,6 +138,71 @@ export const educationInfoContent = {
         </div>
       </div>
     `
+  },
+
+  // Project info content
+  proj_epiderm: {
+    title: "EpiDerm – Skin Disease Detection System",
+    content: `
+      <div class="modal-content-space">
+        <h3 class="modal-title">EpiDerm – Skin Disease Detection System</h3>
+        <div class="modal-body">
+
+          <div class="info-section">
+            <h4 class="info-subtitle">📅 Duration</h4>
+            <ul class="info-list">
+              <li>Feb 2024 – Sep 2024</li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">🩺 Project Overview</h4>
+            <ul class="info-list">
+              <li><strong>EpiDerm</strong> is an AI-powered mobile application that detects and classifies skin diseases from images using machine learning.</li>
+              <li>Developed as part of my <strong>final year project</strong> for the BEng (Hons) Software Engineering degree.</li>
+              <li>The system integrates a responsive frontend with a Firebase backend and a trained CNN model for fast, accurate analysis.</li>
+              <li>Designed with accessibility and user experience in mind, enabling non-experts to receive early indications of common skin conditions.</li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">🚀 Key Features</h4>
+            <ul class="info-list">
+              <li>AI-driven disease detection using a custom-trained convolutional neural network (CNN).</li>
+              <li>Real-time image classification through cloud-hosted APIs integrated with Firebase.</li>
+              <li>User authentication and image storage using Firebase Authentication and Firestore.</li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">💡 Purpose & Motivation</h4>
+            <ul class="info-list">
+              <li>Created to assist individuals in early-stage skin disease detection and awareness.</li>
+              <li>Focused on delivering a practical, easy-to-use diagnostic aid with real clinical relevance.</li>
+              <li>Encourages preventive healthcare through accessible mobile technology.</li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">🧠 What I Learned</h4>
+            <ul class="info-list">
+              <li>End-to-end integration of AI/ML models with mobile frontends.</li>
+              <li>Model training, validation, and optimization for healthcare datasets.</li>
+              <li>Firebase deployment, API management, and user authentication systems.</li>
+              <li>UX research and gathering structured user feedback for product improvement.</li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">🧩 Skills</h4>
+            <ul class="info-list">
+              <li>React Native · Firebase · Machine Learning · TensorFlow · Python · REST APIs · Image Processing · Mobile App Development · Project Management · UX Design · Communication</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    `
   }
 };
   
@@ -140,11 +214,14 @@ export const projectInfoContent = {
       <div class="modal-content-space">
         <h3 class="modal-title">Concurrent Ticketing System</h3>
         <div class="modal-body">
-          <p class="modal-text">Dec 2023 - Jan 2024</p>
-          <p class="modal-text">Associated with University of Westminster</p>
-          <p class="modal-text">Built a multithreaded Java system that simulates passengers and technicians interacting with a shared Ticket Machine. The design was specified in FSP and validated with LTSA, then implemented with Java monitors and thread groups to guarantee safe access to shared resources (paper/toner).</p>
           <div class="info-section">
-            <h4 class="info-subtitle">Key Features</h4>
+            <h4 class="info-subtitle">📖 Overview</h4>
+            <ul class="info-list">
+              <li>Built a multithreaded Java system that simulates passengers and technicians interacting with a shared Ticket Machine. The design was specified in FSP and validated with LTSA, then implemented with Java monitors and thread groups to guarantee safe access to shared resources (paper/toner).</li>
+            </ul>
+          </div>
+          <div class="info-section">
+            <h4 class="info-subtitle">🚀 Key Features</h4>
             <ul class="info-list">
               <li>Modeled the system using FSP and verified the design using the LTSA tool.</li>
               <li>Implemented multi-threading with thread groups and monitors for synchronization.</li>
@@ -152,23 +229,30 @@ export const projectInfoContent = {
             </ul>
           </div>
           <div class="info-section">
-            <h4 class="info-subtitle">What I learned</h4>
+            <h4 class="info-subtitle">🧠 What I Learned</h4>
             <ul class="info-list">
               <li>Practical Java concurrency (synchronization, deadlock avoidance).</li>
               <li>End‑to‑end workflow from formal models (FSP) to implementation.</li>
             </ul>
           </div>
           <div class="info-section">
-            <h4 class="info-subtitle">Achievements & Repository</h4>
+            <h4 class="info-subtitle">🏆 Achievements & Repository</h4>
             <ul class="info-list">
               <li>Grade: 97/100</li>
               <li><a href="https://github.com/AkshayanMohandas/Concurrent-Ticketing-System" target="_blank" rel="noopener noreferrer" id="static-site-link">Concurrent Ticketing System (GitHub)</a></li>
             </ul>
           </div>
           <div class="info-section">
-            <h4 class="info-subtitle">Skills</h4>
+            <h4 class="info-subtitle">🧩 Skills</h4>
             <ul class="info-list">
               <li>Java · Java Software Development · Concurrent Programming · Java Concurrency · Object-Oriented Programming (OOP) · IntelliJ IDEA · Multithreading · Problem Solving</li>
+            </ul>
+          </div>
+          <div class="info-section">
+            <h4 class="info-subtitle">📅 Duration & Affiliation</h4>
+            <ul class="info-list">
+              <li>Dec 2023 - Jan 2024</li>
+              <li>Associated with University of Westminster</li>
             </ul>
           </div>
         </div>
@@ -181,18 +265,21 @@ export const projectInfoContent = {
       <div class="modal-content-space">
         <h3 class="modal-title">Old Asteroids Arcade Game (Formal Specification)</h3>
         <div class="modal-body">
-          <p class="modal-text">Dec 2023 - Jan 2024</p>
-          <p class="modal-text">Associated with University of Westminster</p>
-          <p class="modal-text">Formal B-Method specification of a simplified Asteroids game. Verified with Atelier B and ProB to ensure safe grid navigation, collision handling, and energy constraints.</p>
           <div class="info-section">
-            <h4 class="info-subtitle">Scope</h4>
+            <h4 class="info-subtitle">📖 Overview</h4>
+            <ul class="info-list">
+              <li>Formal B-Method specification of a simplified Asteroids game. Verified with Atelier B and ProB to ensure safe grid navigation, collision handling, and energy constraints.</li>
+            </ul>
+          </div>
+          <div class="info-section">
+            <h4 class="info-subtitle">🧭 Scope</h4>
             <ul class="info-list">
               <li>Models for space, spaceship, obstacles, and operations (move, warp, status).</li>
               <li>Proof obligations and simulations to validate correctness.</li>
             </ul>
           </div>
           <div class="info-section">
-            <h4 class="info-subtitle">What I learned</h4>
+            <h4 class="info-subtitle">🧠 What I Learned</h4>
             <ul class="info-list">
               <li>Specification writing and representing problems in mathematically precise terms.</li>
               <li>Verification and validation to ensure logical correctness and adherence to constraints.</li>
@@ -200,16 +287,23 @@ export const projectInfoContent = {
             </ul>
           </div>
           <div class="info-section">
-            <h4 class="info-subtitle">Achievements & Repository</h4>
+            <h4 class="info-subtitle">🏆 Achievements & Repository</h4>
             <ul class="info-list">
               <li>Grade: 97/100</li>
               <li><a href="https://github.com/AkshayanMohandas/Old-Asteroids-Arcade-Game" target="_blank" rel="noopener noreferrer" id="static-site-link">GitHub - Formal Specification of a Simplified Asteroids Arcade Game</a></li>
             </ul>
           </div>
           <div class="info-section">
-            <h4 class="info-subtitle">Skills</h4>
+            <h4 class="info-subtitle">🧩 Skills</h4>
             <ul class="info-list">
               <li>Formal Methods · Graphs · B specification · Atelier B · ProB · Problem Solving · Coding Experience</li>
+            </ul>
+          </div>
+          <div class="info-section">
+            <h4 class="info-subtitle">📅 Duration & Affiliation</h4>
+            <ul class="info-list">
+              <li>Dec 2023 - Jan 2024</li>
+              <li>Associated with University of Westminster</li>
             </ul>
           </div>
         </div>
@@ -222,11 +316,14 @@ export const projectInfoContent = {
       <div class="modal-content-space">
         <h3 class="modal-title">Weather Explorer & Tourist Guide App (SwiftUI)</h3>
         <div class="modal-body">
-          <p class="modal-text">Nov 2023 - Jan 2024</p>
-          <p class="modal-text">Associated with University of Westminster</p>
-          <p class="modal-text">SwiftUI iOS app that combines OpenWeatherMap forecasts with CoreLocation/MapKit to show real‑time weather and nearby tourist POIs. Users can search cities, see current/hourly/daily data, and browse attractions on an interactive map.</p>
           <div class="info-section">
-            <h4 class="info-subtitle">Key Features</h4>
+            <h4 class="info-subtitle">📖 Overview</h4>
+            <ul class="info-list">
+              <li>SwiftUI iOS app that combines OpenWeatherMap forecasts with CoreLocation/MapKit to show real‑time weather and nearby tourist POIs. Users can search cities, see current/hourly/daily data, and browse attractions on an interactive map.</li>
+            </ul>
+          </div>
+          <div class="info-section">
+            <h4 class="info-subtitle">🚀 Key Features</h4>
             <ul class="info-list">
               <li>Real-time weather updates: Display current conditions, hourly and daily forecasts for any location.</li>
               <li>Tourist Places Map: Interactive map with annotated pins for key tourist attractions, dynamically loaded from local JSON data.</li>
@@ -234,23 +331,30 @@ export const projectInfoContent = {
             </ul>
           </div>
           <div class="info-section">
-            <h4 class="info-subtitle">What I learned</h4>
+            <h4 class="info-subtitle">🧠 What I Learned</h4>
             <ul class="info-list">
               <li>SwiftUI patterns, CoreLocation/MapKit integration, async API handling.</li>
               <li>Performance tuning and HIG‑aligned UI design.</li>
             </ul>
           </div>
           <div class="info-section">
-            <h4 class="info-subtitle">Achievements & Repository</h4>
+            <h4 class="info-subtitle">🏆 Achievements & Repository</h4>
             <ul class="info-list">
               <li>Grade: 86/100</li>
               <li><a href="https://github.com/AkshayanMohandas/Tourist-Utility-App" target="_blank" rel="noopener noreferrer" id="static-site-link">GitHub Repository: Weather Explorer & Tourist Guide App</a></li>
             </ul>
           </div>
           <div class="info-section">
-            <h4 class="info-subtitle">Skills</h4>
+            <h4 class="info-subtitle">🧩 Skills</h4>
             <ul class="info-list">
               <li>Swift · SwiftUI · Xcode · iOS · JSON · APIs · Problem Solving · Coding Experience</li>
+            </ul>
+          </div>
+          <div class="info-section">
+            <h4 class="info-subtitle">📅 Duration & Affiliation</h4>
+            <ul class="info-list">
+              <li>Nov 2023 - Jan 2024</li>
+              <li>Associated with University of Westminster</li>
             </ul>
           </div>
         </div>
@@ -263,11 +367,14 @@ export const projectInfoContent = {
       <div class="modal-content-space">
         <h3 class="modal-title">Sliding Puzzles – Graph Acyclicity Checker</h3>
         <div class="modal-body">
-          <p class="modal-text">Apr 2023 - May 2023</p>
-          <p class="modal-text">Associated with Informatics Institute of Technology (IIT Campus)</p>
-          <p class="modal-text">During my (BEng) in Software Engineering at Informatics Institute of Technology (IIT), Sri Lanka, I developed an advanced Graph Acyclicity Checker as part of my coursework. This project implements the sink elimination algorithm to determine if a directed graph is acyclic, along with a feature to detect cycles in cyclic graphs.</p>
           <div class="info-section">
-            <h4 class="info-subtitle">Key aspects</h4>
+            <h4 class="info-subtitle">📖 Overview</h4>
+            <ul class="info-list">
+              <li>During my (BEng) in Software Engineering at Informatics Institute of Technology (IIT), Sri Lanka, I developed an advanced Graph Acyclicity Checker as part of my coursework. This project implements the sink elimination algorithm to determine if a directed graph is acyclic, along with a feature to detect cycles in cyclic graphs.</li>
+            </ul>
+          </div>
+          <div class="info-section">
+            <h4 class="info-subtitle">🧩 Key Aspects</h4>
             <ul class="info-list">
               <li>Algorithm Design: Iteratively removes sink vertices to confirm acyclicity.</li>
               <li>Data Structures: Directed graphs via adjacency lists for performance.</li>
@@ -277,16 +384,23 @@ export const projectInfoContent = {
             </ul>
           </div>
           <div class="info-section">
-            <h4 class="info-subtitle">Skills</h4>
+            <h4 class="info-subtitle">🧩 Skills</h4>
             <ul class="info-list">
               <li>Java · Algorithms · Algorithm Development · IntelliJ IDEA · Graphs · Coding Experience · Problem Solving</li>
             </ul>
           </div>
           <div class="info-section">
-            <h4 class="info-subtitle">Achievements & Repository</h4>
+            <h4 class="info-subtitle">🏆 Achievements & Repository</h4>
             <ul class="info-list">
               <li>Grade: 88/100</li>
               <li><a href="https://github.com/AkshayanMohandas/Slinding-Puzzles" target="_blank" rel="noopener noreferrer" id="static-site-link">GitHub - Slinding puzzles</a></li>
+            </ul>
+          </div>
+          <div class="info-section">
+            <h4 class="info-subtitle">📅 Duration & Affiliation</h4>
+            <ul class="info-list">
+              <li>Apr 2023 - May 2023</li>
+              <li>Associated with Informatics Institute of Technology (IIT Campus)</li>
             </ul>
           </div>
         </div>
@@ -299,11 +413,14 @@ export const projectInfoContent = {
       <div class="modal-content-space">
         <h3 class="modal-title">Skin Consultation Management System</h3>
         <div class="modal-body">
-          <p class="modal-text">Oct 2022 - Jan 2023</p>
-          <p class="modal-text">Associated with Informatics Institute of Technology (IIT Campus)</p>
-          <p class="modal-text">Java system (console + Swing GUI) to manage dermatology doctors, patients, and consultations with persistent storage and encrypted records.</p>
           <div class="info-section">
-            <h4 class="info-subtitle">The project includes</h4>
+            <h4 class="info-subtitle">📖 Overview</h4>
+            <ul class="info-list">
+              <li>Java system (console + Swing GUI) to manage dermatology doctors, patients, and consultations with persistent storage and encrypted records.</li>
+            </ul>
+          </div>
+          <div class="info-section">
+            <h4 class="info-subtitle">📦 The Project Includes</h4>
             <ul class="info-list">
               <li>Doctor management with detailed profiles and specializations.</li>
               <li>Consultation booking, modification, and cancellation with availability checks.</li>
@@ -312,15 +429,22 @@ export const projectInfoContent = {
             </ul>
           </div>
           <div class="info-section">
-            <h4 class="info-subtitle">Tech & Skills</h4>
+            <h4 class="info-subtitle">🛠️ Tech & Skills</h4>
             <ul class="info-list">
               <li>Java (Swing), UML, File I/O, Encryption, Unit Testing, OOP design.</li>
             </ul>
           </div>
           <div class="info-section">
-            <h4 class="info-subtitle">Repository</h4>
+            <h4 class="info-subtitle">📂 Repository</h4>
             <ul class="info-list">
               <li><a href="https://github.com/AkshayanMohandas/Skin-Consultation-Centre" target="_blank" rel="noopener noreferrer" id="static-site-link">GitHub Repository</a></li>
+            </ul>
+          </div>
+          <div class="info-section">
+            <h4 class="info-subtitle">📅 Duration & Affiliation</h4>
+            <ul class="info-list">
+              <li>Oct 2022 - Jan 2023</li>
+              <li>Associated with Informatics Institute of Technology (IIT Campus)</li>
             </ul>
           </div>
         </div>
@@ -333,11 +457,14 @@ export const projectInfoContent = {
       <div class="modal-content-space">
         <h3 class="modal-title">Cruise Ship Boarding System</h3>
         <div class="modal-body">
-          <p class="modal-text">Mar 2022 - Apr 2022</p>
-          <p class="modal-text">Associated with Informatics Institute of Technology (IIT Campus)</p>
-          <p class="modal-text">Java console app for managing cruise ship cabins and passengers via a menu‑driven workflow.</p>
           <div class="info-section">
-            <h4 class="info-subtitle">Key features</h4>
+            <h4 class="info-subtitle">📖 Overview</h4>
+            <ul class="info-list">
+              <li>Java console app for managing cruise ship cabins and passengers via a menu‑driven workflow.</li>
+            </ul>
+          </div>
+          <div class="info-section">
+            <h4 class="info-subtitle">🚀 Key Features</h4>
             <ul class="info-list">
               <li>Cabin CRUD, alphabetical sorting and search.</li>
               <li>File save/load and passenger expense tracking.</li>
@@ -345,15 +472,22 @@ export const projectInfoContent = {
             </ul>
           </div>
           <div class="info-section">
-            <h4 class="info-subtitle">Repository</h4>
+            <h4 class="info-subtitle">📂 Repository</h4>
             <ul class="info-list">
               <li><a href="https://github.com/AkshayanMohandas/Boarding-System-For-A-CruiseShip" target="_blank" rel="noopener noreferrer" id="static-site-link">GitHub - Boarding System For A CruiseShip</a></li>
             </ul>
           </div>
           <div class="info-section">
-            <h4 class="info-subtitle">Skills</h4>
+            <h4 class="info-subtitle">🧩 Skills</h4>
             <ul class="info-list">
               <li>Java Software Development · Usability Testing · DBMS · IntelliJ IDEA · Critical Thinking · Problem Solving</li>
+            </ul>
+          </div>
+          <div class="info-section">
+            <h4 class="info-subtitle">📅 Duration & Affiliation</h4>
+            <ul class="info-list">
+              <li>Mar 2022 - Apr 2022</li>
+              <li>Associated with Informatics Institute of Technology (IIT Campus)</li>
             </ul>
           </div>
         </div>
@@ -366,34 +500,120 @@ export const projectInfoContent = {
       <div class="modal-content-space">
         <h3 class="modal-title">Tripper – A Tourism Website</h3>
         <div class="modal-body">
-          <p class="modal-text">Feb 2022 - Mar 2022</p>
-          <p class="modal-text">Associated with Informatics Institute of Technology (IIT Campus)</p>
-          <p class="modal-text">Team‑built tourism site letting users explore destinations, and purchase travel‑related products. Built with HTML/CSS/JS and modern front‑end practices.</p>
           <div class="info-section">
-            <h4 class="info-subtitle">Key Features</h4>
+            <h4 class="info-subtitle">📖 Overview</h4>
+            <ul class="info-list">
+              <li>Team‑built tourism site letting users explore destinations, and purchase travel‑related products. Built with HTML/CSS/JS and modern front‑end practices.</li>
+            </ul>
+          </div>
+          <div class="info-section">
+            <h4 class="info-subtitle">🚀 Key Features</h4>
             <ul class="info-list">
               <li>Home Page and Presentation/Index Page for onboarding and navigation.</li>
               <li>Buy Products Page to purchase travel-related items.</li>
             </ul>
           </div>
           <div class="info-section">
-            <h4 class="info-subtitle">My Role</h4>
+            <h4 class="info-subtitle">👤 My Role</h4>
             <ul class="info-list">
               <li>Presentation/Index, Home, and Buy Products pages.</li>
               <li>Responsive UI/UX implementation.</li>
             </ul>
           </div>
           <div class="info-section">
-            <h4 class="info-subtitle">Achievements & Repository</h4>
+            <h4 class="info-subtitle">🏆 Achievements & Repository</h4>
             <ul class="info-list">
               <li>Achievement: 95/100</li>
               <li><a href="https://github.com/AkshayanMohandas/TRIPPER" target="_blank" rel="noopener noreferrer" id="static-site-link">GitHub Repository: Tripper</a></li>
             </ul>
           </div>
           <div class="info-section">
-            <h4 class="info-subtitle">Skills</h4>
+            <h4 class="info-subtitle">🧩 Skills</h4>
             <ul class="info-list">
               <li>Web Application Development · HTML · CSS · JavaScript · VS Code · Teamwork · Problem Solving · Report Writing</li>
+            </ul>
+          </div>
+          <div class="info-section">
+            <h4 class="info-subtitle">📅 Duration & Affiliation</h4>
+            <ul class="info-list">
+              <li>Feb 2022 - Mar 2022</li>
+              <li>Associated with Informatics Institute of Technology (IIT Campus)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    `
+  },
+  proj_cricozy: {
+    title: "CricOzy – AI-Powered Cricket Coaching Platform",
+    content: `
+      <div class="modal-content-space">
+        <h3 class="modal-title">CricOzy – AI-Powered Cricket Coaching Platform</h3>
+        <div class="modal-body">
+          <div class="info-section">
+            <h4 class="info-subtitle">📖 Overview</h4>
+            <ul class="info-list">
+              <li>
+              CricOzy is a cross-platform mobile application that revolutionizes cricket coaching using 
+              <strong>machine learning</strong> and <strong>computer vision</strong>. The app provides amateur players 
+              with real-time feedback and personalized insights on their batting, bowling, and fitness techniques.
+              Built using <strong>Flutter, Python (Flask), TensorFlow, OpenCV, and Firebase</strong>, 
+              it delivers AI-driven training anywhere, anytime.
+              </li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">🚀 Key Features</h4>
+            <ul class="info-list">
+              <li>Pose estimation and motion analysis using <strong>MediaPipe</strong> and <strong>TensorFlow</strong>.</li>
+              <li>Video-based technique assessment and AI-powered performance reports.</li>
+              <li>Modules for batting analysis, bowling speed detection, and fitness guidance.</li>
+              <li>Cross-platform support for Android and iOS using <strong>Flutter</strong>.</li>
+              <li>Continuous Integration/Deployment (CI/CD) with <strong>Jenkins</strong> and <strong>GitHub Actions</strong>.</li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">🛠️ Technology Stack</h4>
+            <ul class="info-list">
+              <li><strong>Frontend:</strong> Flutter, Figma UI Design</li>
+              <li><strong>Backend:</strong> Flask (Python), Firebase Realtime Database</li>
+              <li><strong>Machine Learning:</strong> TensorFlow, OpenCV, MediaPipe, Random Forest, CNN</li>
+              <li><strong>DevOps:</strong> GitHub, Jenkins, Google Cloud</li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">🧑‍💻 What I Contributed</h4>
+            <ul class="info-list">
+              <li>Developed the <strong>ML model integration</strong> pipeline using Flask APIs and Firebase.</li>
+              <li>Implemented <strong>real-time pose tracking</strong> for batting and bowling motion correction.</li>
+              <li>Built interactive Flutter UIs for analysis dashboards, profile management, and reports.</li>
+              <li>Managed CI/CD workflows using GitHub Actions and Jenkins.</li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">🏆 Achievements & Recognition</h4>
+            <ul class="info-list">
+              <li>Selected for <strong>ICC NIUM “Next-In” Hackathon</strong> and <strong>Microsoft Imagine Cup</strong>.</li>
+              <li>Showcased at IIT’s <strong>CodeSprint 7.0</strong> competition.</li>
+              <li>Featured in university publications as an innovative student-led sports tech project.</li>
+            </ul>
+          </div>
+
+          <div class="info-section">
+            <h4 class="info-subtitle">🧩 Skills</h4>
+            <ul class="info-list">
+              <li>Flutter · Python · Firebase · TensorFlow · OpenCV · MediaPipe · CI/CD · Flask · Agile Development · Team Collaboration · Machine Learning Deployment</li>
+            </ul>
+          </div>
+          <div class="info-section">
+            <h4 class="info-subtitle">📅 Duration & Affiliation</h4>
+            <ul class="info-list">
+              <li>Jan 2024 – Jun 2024</li>
+              <li>Associated with Informatics Institute of Technology (IIT Campus)</li>
             </ul>
           </div>
         </div>
@@ -406,11 +626,14 @@ export const projectInfoContent = {
       <div class="modal-content-space">
         <h3 class="modal-title">Student Progression Outcome Prediction System</h3>
         <div class="modal-body">
-          <p class="modal-text">Nov 2021 - Dec 2021</p>
-          <p class="modal-text">Associated with Informatics Institute of Technology (IIT Campus)</p>
-          <p class="modal-text">Python tool to determine student outcomes from Pass/Defer/Fail credits, with strong input validation and histogram summaries.</p>
           <div class="info-section">
-            <h4 class="info-subtitle">Key functionalities</h4>
+            <h4 class="info-subtitle">📖 Overview</h4>
+            <ul class="info-list">
+              <li>Python tool to determine student outcomes from Pass/Defer/Fail credits, with strong input validation and histogram summaries.</li>
+            </ul>
+          </div>
+          <div class="info-section">
+            <h4 class="info-subtitle">⚙️ Key Functionalities</h4>
             <ul class="info-list">
               <li>Input validation and total credit checks.</li>
               <li>Automated outcome calculation per academic rules.</li>
@@ -419,15 +642,22 @@ export const projectInfoContent = {
             </ul>
           </div>
           <div class="info-section">
-            <h4 class="info-subtitle">Skills</h4>
+            <h4 class="info-subtitle">🧩 Skills</h4>
             <ul class="info-list">
               <li>Python · Problem Solving · Software Development · Algorithm Analysis · Data Management</li>
             </ul>
           </div>
           <div class="info-section">
-            <h4 class="info-subtitle">Repository</h4>
+            <h4 class="info-subtitle">📂 Repository</h4>
             <ul class="info-list">
               <li><a href="https://github.com/AkshayanMohandas/Student-Progression-Outcome-Prediction-System" target="_blank" rel="noopener noreferrer" id="static-site-link">GitHub - Student Progression Outcome Prediction System</a></li>
+            </ul>
+          </div>
+          <div class="info-section">
+            <h4 class="info-subtitle">📅 Duration & Affiliation</h4>
+            <ul class="info-list">
+              <li>Nov 2021 - Dec 2021</li>
+              <li>Associated with Informatics Institute of Technology (IIT Campus)</li>
             </ul>
           </div>
         </div>
