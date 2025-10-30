@@ -582,7 +582,7 @@ Ammo().then((Ammo) => {
       const button = gltf.scene;
       
       // Position button on the ground between the text elements
-      button.position.set(0, 0.5, -20); // Moved forward with solar system
+      button.position.set(0, 0.5, -13); // Moved forward with solar system
       
       // Scale the button to appropriate size
       button.scale.setScalar(5); // Adjust scale as needed
@@ -3046,7 +3046,7 @@ Ammo().then((Ammo) => {
     leftAlignedText(-80, 0.01, 19, 'Built with React, Firebase, and machine learning for fast, accurate results.', 0.8);
 
     // Work Experience Section - Right Side - 3D
-    create3DSectionTitle('WORK EXPERIENCE', 72, 2, -50, 3.0, 3.0);
+    create3DSectionTitle('WORK EXPERIENCE', 72, 2, -46, 3.0, 3.0);
     
     // Experience 1 - Technical Lead at Mana Medical
     leftAlignedText(55, 1.5, -40, 'Technical Lead — Mana Medical', 1.2);
@@ -3110,49 +3110,48 @@ Ammo().then((Ammo) => {
     createBox(52, 2, 20, 4, 4, 1, boxTexture.ieee, '', 0xFFFFFF, true, true, 0.8);
 
     // Education Section - Right Side - 3D
-    create3DSectionTitle('EDUCATION', -0.7, 2, -113, 3.0, 3.0);
+    create3DSectionTitle('EDUCATION', 65.8, 2, -105, 3.0, 3.0);
     
     // Education 1 - University of Westminster
-    leftAlignedText(-11.5, 1.0, -105, 'University of Westminster', 1.2);
-    leftAlignedText(-11.5, 0.01, -105, 'University of Westminster', 1.2, 0x1a1a1a);
+    leftAlignedText(55, 1.0, -97, 'University of Westminster', 1.2);
+    leftAlignedText(55, 0.01, -97, 'University of Westminster', 1.2, 0x1a1a1a);
     // Add info icon for University of Westminster
-    createInfoIcon(10, 1.0, -105, 'westminster');
-    leftAlignedText(-11.5, 0.01, -102, 'BEng (Hons) Software Engineering', 1.0);
-    leftAlignedText(-11.5, 0.01, -99, 'Sep 2021 – Jun 2024 | London, United Kingdom', 0.8);
-    leftAlignedText(-11.5, 0.01, -96, 'Graduated with First Class Honours.', 0.8);
-    leftAlignedText(-11.5, 0.01, -93, '', 0.8, 0x1a1a1a);
+    createInfoIcon(58.5, 1.0, -97, 'westminster');
+    leftAlignedText(55, 0.01, -94, 'BEng (Hons) Software Engineering', 1.0);
+    leftAlignedText(55, 0.01, -91, 'Sep 2021 – Jun 2024 | London, United Kingdom', 0.8);
+    leftAlignedText(55, 0.01, -88, 'Graduated with First Class Honours.', 0.8);
 
     // Education 2 - Informatics Institute of Technology
-    leftAlignedText(-11.5, 1.0, -90, 'Informatics Institute of Technology (IIT Campus)', 1.2);
-    leftAlignedText(-11.5, 0.01, -90, 'Informatics Institute of Technology (IIT Campus)', 1.2, 0x1a1a1a);
+    leftAlignedText(55, 1.0, -82, 'Informatics Institute of Technology (IIT Campus)', 1.2);
+    leftAlignedText(55, 0.01, -82, 'Informatics Institute of Technology (IIT Campus)', 1.2, 0x1a1a1a);
     // Add info icon for Informatics Institute of Technology
-    createInfoIcon(25, 1.0, -90, 'iit');
-    leftAlignedText(-11.5, 0.01, -87, 'BEng (Hons) Software Engineering (Affiliated with University of Westminster)', 1.0);
-    leftAlignedText(-11.5, 0.01, -84, 'Sep 2021 – Aug 2023 | Colombo, Sri Lanka', 0.8);
-    leftAlignedText(-11.5, 0.01, -81, 'Achieved First Class Honours.', 0.8);
-    leftAlignedText(-11.5, 0.01, -78, '', 0.8);
+    createInfoIcon(58.5, 1.0, -82, 'iit');
+    leftAlignedText(55, 0.01, -79, 'BEng (Hons) Software Engineering (Affiliated with University of Westminster)', 1.0);
+    leftAlignedText(55, 0.01, -79, 'Sep 2021 – Aug 2023 | Colombo, Sri Lanka', 0.8);
+    leftAlignedText(55, 0.01, -76, 'Achieved First Class Honours.', 0.8);
+    leftAlignedText(55, 0.01, -73, '', 0.8);
 
     // Education 3 - S. Thomas' College
-    leftAlignedText(-11.5, 1.0, -75, 'S. Thomas\' College, Mount Lavinia', 1.2);
-    leftAlignedText(-11.5, 0.01, -75, 'S. Thomas\' College, Mount Lavinia', 1.2, 0x1a1a1a);
+    leftAlignedText(55, 1.0, -67, 'S. Thomas\' College, Mount Lavinia', 1.2);
+    leftAlignedText(55, 0.01, -67, 'S. Thomas\' College, Mount Lavinia', 1.2, 0x1a1a1a);
     // Add info icon for S. Thomas' College
-    createInfoIcon(15, 1.0, -75, 'stc');
-    leftAlignedText(-11.5, 0.01, -72, 'GCE Advanced Level – Physical Science Stream (A/L) | Jan 2018 – Aug 2020 | Grades: A, 2C', 1.0);
-    leftAlignedText(-11.5, 0.01, -69, 'GCE Ordinary Level (O/L) | Jan 2007 – Dec 2017 | Grades: 8A, 1B', 1.0);
+    createInfoIcon(58.5, 1.0, -67, 'stc');
+    leftAlignedText(55, 0.01, -64, 'GCE Advanced Level – Physical Science Stream (A/L) | Jan 2018 – Aug 2020 | Grades: A, 2C', 1.0);
+    leftAlignedText(55, 0.01, -61, 'GCE Ordinary Level (O/L) | Jan 2007 – Dec 2017 | Grades: 8A, 1B', 1.0);
 
     const instagramGradient = 0xE1306C;
     
-    createBox(70, 2, -90, 4, 4, 1, boxTexture.instagram, URL.instagram, instagramGradient, true, true, 0.8);
+    createBox(-20, 2, -110, 4, 4, 1, boxTexture.instagram, URL.instagram, instagramGradient, true, true, 0.8);
 
-    createBox(78, 2, -80, 4, 4, 1, boxTexture.tiktok, URL.tiktok, 0x000000, true, true, 0.8);
+    createBox(-12, 2, -100, 4, 4, 1, boxTexture.tiktok, URL.tiktok, 0x000000, true, true, 0.8);
 
-    createBox(86, 2, -70, 4, 4, 1, boxTexture.linkedin, URL.linkedin, 0x0077b5, true, true, 0.8);
+    createBox(-4, 2, -90, 4, 4, 1, boxTexture.linkedin, URL.linkedin, 0x0077b5, true, true, 0.8);
     
-    createBox(94, 2, -70, 4, 4, 1, boxTexture.Github, URL.gitHub, 0x000000, true, true, 0.8);
+    createBox(4, 2, -90, 4, 4, 1, boxTexture.Github, URL.gitHub, 0x000000, true, true, 0.8);
     
-    createBox(102, 2, -80, 4, 4, 1, boxTexture.mail, URL.email, 0x4285F4, true, true, 0.8);
+    createBox(12, 2, -100, 4, 4, 1, boxTexture.mail, URL.email, 0x4285F4, true, true, 0.8);
 
-    createBox(110, 2, -90, 4, 4, 1, boxTexture.behance, URL.behance, 0x1769FF, true, true, 0.8);
+    createBox(20, 2, -110, 4, 4, 1, boxTexture.behance, URL.behance, 0x1769FF, true, true, 0.8);
 
     //lensflare
     createLensFlare(500, 50, -1000, 250, 250, boxTexture.lensFlareMain);
@@ -3174,8 +3173,8 @@ Ammo().then((Ammo) => {
 
     // simpleText(9, 0.01, 5, instructionsText, 1.25);
     // simpleText(9, 0.01, 2, 'Press R to reset the AKSHAYAN letters!', 1.0);
-    simpleText(0, 0.01, -13, 'Click the RED BUTTON below the solar system!', 1.0);
-    simpleText(0, 0.01, -28, 'SOLAR SYSTEM', 2.0);
+    simpleText(0, 0.01, -5, 'Click the RED BUTTON below the solar system!', 1.0);
+    create3DSectionTitle('SOLAR SYSTEM', 0, 2, -20, 3.0, 3.0);
 
     simpleText(23, 0.01, -60, touchText, 1.5);
     // simpleText(-50, 0.01, -5, 'SKILLS', 3);
@@ -3230,10 +3229,10 @@ Ammo().then((Ammo) => {
     createTimeMachine(-70, 0, 60, 2); // Position at (-90, 1, 90) with scale 5
 
     // Add earth model to the ground
-    createEarth(90, 12, -85, 10); // Position earth model on the ground near the time machine
+    createEarth(0, 12, -105, 10); // Position earth model on the ground near the time machine
 
     // Add dancing alien model to the ground
-    createDancingAlien(13, 0, -113, 8); // Position dancing alien model on the ground
+    createDancingAlien(88, 0, -113, 8); // Position dancing alien model on the ground
 
     // Create interactive tool carousel instead of multiple overlapping images
     createToolCarousel(-70, 9, 60, 4, 4);
@@ -3243,13 +3242,13 @@ Ammo().then((Ammo) => {
 
     // Add waving flags for each educational institution
     // University of Westminster flag - positioned at x=54 to align with text
-    createWavingFlag(-11.9, 0, -105, 6, 4, 10, './src/jsm/flags/University of Westminster.png', 'University of Westminster');
+    createWavingFlag(54, 0, -97, 6, 4, 10, './src/jsm/flags/University of Westminster.png', 'University of Westminster');
     
     // Informatics Institute of Technology flag - positioned at x=54 to align with text
-    createWavingFlag(-11.9, 0, -90, 6, 4, 10, './src/jsm/flags/Informatics Institute of Technology.png', 'Informatics Institute of Technology');
+    createWavingFlag(54, 0, -82, 6, 4, 10, './src/jsm/flags/Informatics Institute of Technology.png', 'Informatics Institute of Technology');
     
     // S. Thomas' College flag - positioned at x=54 to align with text
-    createWavingFlag(-11.9, 0, -75, 6, 4, 10, './src/jsm/flags/S.Thomas College.png', 'S. Thomas\' College');
+    createWavingFlag(54, 0, -67, 6, 4, 10, './src/jsm/flags/S.Thomas College.png', 'S. Thomas\' College');
 
     addParticles();
     glowingParticles();
