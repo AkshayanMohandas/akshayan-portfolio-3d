@@ -2451,6 +2451,198 @@ Ammo().then((Ammo) => {
     });
   }
 
+  // Load and create the Perseverance Mars Rover model
+  function createPerseveranceMarsRover(x, y, z, scale = 1) {
+    const loader = new GLTFLoader();
+    loader.load('./src/models/perseverance_mars_rover.glb', (gltf) => {
+      const model = gltf.scene;
+      model.position.set(x, y, z);
+      model.scale.setScalar(scale);
+      model.rotation.x = 0;
+      model.rotation.y = -(Math.PI * 60) / 180;
+      model.rotation.z = 0;
+      model.traverse((child) => {
+        if (child.isMesh) {
+          child.castShadow = true;
+          child.receiveShadow = true;
+        }
+      });
+      scene.add(model);
+      if (gltf.animations && gltf.animations.length > 0) {
+        const mixer = new THREE.AnimationMixer(model);
+        const action = mixer.clipAction(gltf.animations[0]);
+        action.play();
+        model.userData.mixer = mixer;
+      }
+      addRigidPhysics(model, { x: 3, y: 2, z: 4 });
+      console.log('Perseverance Mars Rover GLB model loaded successfully');
+    }, (progress) => {
+      console.log('Perseverance Mars Rover loading progress:', (progress.loaded / (progress.total || 1) * 100) + '%');
+    }, (error) => {
+      console.error('Error loading Perseverance Mars Rover GLB model:', error);
+    });
+  }
+
+  // Load and create the Robot Drone model
+  function createRobotDrone(x, y, z, scale = 1) {
+    const loader = new GLTFLoader();
+    loader.load('./src/models/robot_drone_-_homework__detailed_draft.glb', (gltf) => {
+      const model = gltf.scene;
+      model.position.set(x, y, z);
+      model.scale.setScalar(scale);
+      model.rotation.x = 0;
+      model.rotation.y = (Math.PI * 30) / 180;
+      model.rotation.z = 0;
+      model.traverse((child) => {
+        if (child.isMesh) {
+          child.castShadow = true;
+          child.receiveShadow = true;
+        }
+      });
+      scene.add(model);
+      if (gltf.animations && gltf.animations.length > 0) {
+        const mixer = new THREE.AnimationMixer(model);
+        const action = mixer.clipAction(gltf.animations[0]);
+        action.play();
+        model.userData.mixer = mixer;
+      }
+      addRigidPhysics(model, { x: 2, y: 1.5, z: 2 });
+      console.log('Robot Drone GLB model loaded successfully');
+    }, (progress) => {
+      console.log('Robot Drone loading progress:', (progress.loaded / (progress.total || 1) * 100) + '%');
+    }, (error) => {
+      console.error('Error loading Robot Drone GLB model:', error);
+    });
+  }
+
+  // Load and create the Spider Mars Bot model
+  function createSpiderMarsBot(x, y, z, scale = 1) {
+    const loader = new GLTFLoader();
+    loader.load('./src/models/spider_mars_bot.glb', (gltf) => {
+      const model = gltf.scene;
+      model.position.set(x, y, z);
+      model.scale.setScalar(scale);
+      model.rotation.x = 0;
+      model.rotation.y = (Math.PI * 120) / 180;
+      model.rotation.z = 0;
+      model.traverse((child) => {
+        if (child.isMesh) {
+          child.castShadow = true;
+          child.receiveShadow = true;
+        }
+      });
+      scene.add(model);
+      if (gltf.animations && gltf.animations.length > 0) {
+        const mixer = new THREE.AnimationMixer(model);
+        const action = mixer.clipAction(gltf.animations[0]);
+        action.play();
+        model.userData.mixer = mixer;
+      }
+      addRigidPhysics(model, { x: 2.5, y: 1.5, z: 2.5 });
+      console.log('Spider Mars Bot GLB model loaded successfully');
+    }, (progress) => {
+      console.log('Spider Mars Bot loading progress:', (progress.loaded / (progress.total || 1) * 100) + '%');
+    }, (error) => {
+      console.error('Error loading Spider Mars Bot GLB model:', error);
+    });
+  }
+
+  // Load and create the Terrarium Bots model
+  function createTerrariumBotsNerdScribbles(x, y, z, scale = 1) {
+    const loader = new GLTFLoader();
+    loader.load('./src/models/terrarium_bots_nerdscribbles.glb', (gltf) => {
+      const model = gltf.scene;
+      model.position.set(x, y, z);
+      model.scale.setScalar(scale);
+      model.rotation.x = 0;
+      model.rotation.y = -(Math.PI * 160) / 180;
+      model.rotation.z = 0;
+      model.traverse((child) => {
+        if (child.isMesh) {
+          child.castShadow = true;
+          child.receiveShadow = true;
+        }
+      });
+      scene.add(model);
+      if (gltf.animations && gltf.animations.length > 0) {
+        const mixer = new THREE.AnimationMixer(model);
+        const action = mixer.clipAction(gltf.animations[0]);
+        action.play();
+        model.userData.mixer = mixer;
+      }
+      addRigidPhysics(model, { x: 3, y: 3, z: 3 });
+      console.log('Terrarium Bots GLB model loaded successfully');
+    }, (progress) => {
+      console.log('Terrarium Bots loading progress:', (progress.loaded / (progress.total || 1) * 100) + '%');
+    }, (error) => {
+      console.error('Error loading Terrarium Bots GLB model:', error);
+    });
+  }
+
+  // Load and create the TARS model
+  function createTarsMyVersion(x, y, z, scale = 1) {
+    const loader = new GLTFLoader();
+    loader.load('./src/models/tars_my_version.glb', (gltf) => {
+      const model = gltf.scene;
+      model.position.set(x, y, z);
+      model.scale.setScalar(scale);
+      model.rotation.x = 0;
+      model.rotation.y = -(Math.PI * 60) / 180;
+      model.rotation.z = 0;
+      model.traverse((child) => {
+        if (child.isMesh) {
+          child.castShadow = true;
+          child.receiveShadow = true;
+        }
+      });
+      scene.add(model);
+      if (gltf.animations && gltf.animations.length > 0) {
+        const mixer = new THREE.AnimationMixer(model);
+        const action = mixer.clipAction(gltf.animations[0]);
+        action.play();
+        model.userData.mixer = mixer;
+      }
+      addRigidPhysics(model, { x: 2, y: 4, z: 1 });
+      console.log('TARS (my version) GLB model loaded successfully');
+    }, (progress) => {
+      console.log('TARS (my version) loading progress:', (progress.loaded / (progress.total || 1) * 100) + '%');
+    }, (error) => {
+      console.error('Error loading TARS (my version) GLB model:', error);
+    });
+  }
+
+  // Load and create the Micro Robot Bug model
+  function createMicroRobotBug(x, y, z, scale = 1) {
+    const loader = new GLTFLoader();
+    loader.load('./src/models/micro_robot_bug.glb', (gltf) => {
+      const model = gltf.scene;
+      model.position.set(x, y, z);
+      model.scale.setScalar(scale);
+      model.rotation.x = 0;
+      model.rotation.y = -(Math.PI * 60) / 180;
+      model.rotation.z = 0;
+      model.traverse((child) => {
+        if (child.isMesh) {
+          child.castShadow = true;
+          child.receiveShadow = true;
+        }
+      });
+      scene.add(model);
+      if (gltf.animations && gltf.animations.length > 0) {
+        const mixer = new THREE.AnimationMixer(model);
+        const action = mixer.clipAction(gltf.animations[0]);
+        action.play();
+        model.userData.mixer = mixer;
+      }
+      addRigidPhysics(model, { x: 1.5, y: 1, z: 2 });
+      console.log('Micro Robot Bug GLB model loaded successfully');
+    }, (progress) => {
+      console.log('Micro Robot Bug loading progress:', (progress.loaded / (progress.total || 1) * 100) + '%');
+    }, (error) => {
+      console.error('Error loading Micro Robot Bug GLB model:', error);
+    });
+  }
+
   // Create a simple image plane without a box
   function createImagePlane(x, y, z, textureImage, urlLink, width = 4, height = 4, rotation = 0) {
     const loader = new THREE.TextureLoader(manager);
@@ -3046,98 +3238,98 @@ Ammo().then((Ammo) => {
     leftAlignedText(-80, 0.01, 19, 'Built with React, Firebase, and machine learning for fast, accurate results.', 0.8);
 
     // Work Experience Section - Right Side - 3D
-    create3DSectionTitle('WORK EXPERIENCE', 72, 2, -46, 3.0, 3.0);
+    create3DSectionTitle('WORK EXPERIENCE', 62, 2, -46, 3.0, 3.0);
     
     // Experience 1 - Technical Lead at Mana Medical
-    leftAlignedText(55, 1.5, -40, 'Technical Lead — Mana Medical', 1.2);
+    leftAlignedText(45, 1.5, -40, 'Technical Lead — Mana Medical', 1.2);
     // Info icon for Technical Lead — Mana Medical
-    createInfoIcon(58.5, 1.5, -40, 'exp_mana');
-    leftAlignedText(55, 0.01, -40, 'Technical Lead — Mana Medical', 1.2, 0x1a1a1a);
-    leftAlignedText(55, 0.01, -37, 'Jan 2025 – Present | London, UK (Hybrid)', 1.0);
-    leftAlignedText(55, 0.01, -34, 'Leading mobile application development using React Native and full-stack technologies.', 0.8);
-    leftAlignedText(55, 0.01, -31, 'Overseeing technical architecture, code quality, and team coordination.', 0.8);
+    createInfoIcon(48.5, 1.5, -40, 'exp_mana');
+    leftAlignedText(45, 0.01, -40, 'Technical Lead — Mana Medical', 1.2, 0x1a1a1a);
+    leftAlignedText(45, 0.01, -37, 'Jan 2025 – Present | London, UK (Hybrid)', 1.0);
+    leftAlignedText(45, 0.01, -34, 'Leading mobile application development using React Native and full-stack technologies.', 0.8);
+    leftAlignedText(45, 0.01, -31, 'Overseeing technical architecture, code quality, and team coordination.', 0.8);
 
     // Experience 2 - Full-stack Developer at University of Westminster
-    leftAlignedText(55, 1.5, -25, 'Full-stack Developer — University of Westminster', 1.2);
+    leftAlignedText(45, 1.5, -25, 'Full-stack Developer — University of Westminster', 1.2);
     // Info icon for Full-stack Developer — University of Westminster
-    createInfoIcon(58.5, 1.5, -25, 'exp_westminster_dev');
-    leftAlignedText(55, 0.01, -25, 'Full-stack Developer — University of Westminster', 1.2, 0x1a1a1a);
-    leftAlignedText(55, 0.01, -22, 'Feb 2024 – May 2024 | London, UK (Hybrid)', 1.0);
-    leftAlignedText(55, 0.01, -19, 'Developed and maintained Django-based web applications. Improved RoomView\'s front-end', 0.8);
-    leftAlignedText(55, 0.01, -16, 'using HTML, CSS, and JavaScript, and documented system processes for the LIDE team.', 0.8);
+    createInfoIcon(48.5, 1.5, -25, 'exp_westminster_dev');
+    leftAlignedText(45, 0.01, -25, 'Full-stack Developer — University of Westminster', 1.2, 0x1a1a1a);
+    leftAlignedText(45, 0.01, -22, 'Feb 2024 – May 2024 | London, UK (Hybrid)', 1.0);
+    leftAlignedText(45, 0.01, -19, 'Developed and maintained Django-based web applications. Improved RoomView\'s front-end', 0.8);
+    leftAlignedText(45, 0.01, -16, 'using HTML, CSS, and JavaScript, and documented system processes for the LIDE team.', 0.8);
 
     // Experience 3 - Software Quality Assurance Engineer at Dataintics
-    leftAlignedText(55, 1.5, -10, 'Software Quality Assurance Engineer (Intern) — Dataintics', 1.2);
+    leftAlignedText(45, 1.5, -10, 'Software Quality Assurance Engineer (Intern) — Dataintics', 1.2);
     // Info icon for Software QA Engineer — Dataintics
-    createInfoIcon(58.5, 1.5, -10, 'exp_dataintics');
-    leftAlignedText(55, 0.01, -10, 'Software Quality Assurance Engineer (Intern) — Dataintics', 1.2, 0x1a1a1a);
-    leftAlignedText(55, 0.01, -7, 'May 2023 – Jul 2023 | Colombo, Sri Lanka (On-site)', 1.0);
-    leftAlignedText(55, 0.01, -4, 'Performed quality assurance testing for the KoverUI insurance platform, ensuring', 0.8);
-    leftAlignedText(55, 0.01, -1, 'software reliability and functionality.', 0.8);
+    createInfoIcon(48.5, 1.5, -10, 'exp_dataintics');
+    leftAlignedText(45, 0.01, -10, 'Software Quality Assurance Engineer (Intern) — Dataintics', 1.2, 0x1a1a1a);
+    leftAlignedText(45, 0.01, -7, 'May 2023 – Jul 2023 | Colombo, Sri Lanka (On-site)', 1.0);
+    leftAlignedText(45, 0.01, -4, 'Performed quality assurance testing for the KoverUI insurance platform, ensuring', 0.8);
+    leftAlignedText(45, 0.01, -1, 'software reliability and functionality.', 0.8);
 
     // Experience 4 - Editor at Students' Union
-    leftAlignedText(55, 1.5, 5, 'Editor – Students\' Union 2022/23 — IIT', 1.2);
+    leftAlignedText(45, 1.5, 5, 'Editor – Students\' Union 2022/23 — IIT', 1.2);
     // Info icon for Editor — Students' Union
-    createInfoIcon(58.5, 1.5, 5, 'exp_editor_su');
-    leftAlignedText(55, 0.01, 5, 'Editor – Students\' Union 2022/23 — IIT', 1.2, 0x1a1a1a);
-    leftAlignedText(55, 0.01, 8, 'Oct 2022 – Sep 2023 | Colombo, Sri Lanka (On-site)', 1.0);
-    leftAlignedText(55, 0.01, 11, 'Created and edited promotional materials for student events. Collaborated on marketing', 0.8);
-    leftAlignedText(55, 0.01, 14, 'content and managed multiple design projects under tight deadlines.', 0.8);
+    createInfoIcon(48.5, 1.5, 5, 'exp_editor_su');
+    leftAlignedText(45, 0.01, 5, 'Editor – Students\' Union 2022/23 — IIT', 1.2, 0x1a1a1a);
+    leftAlignedText(45, 0.01, 8, 'Oct 2022 – Sep 2023 | Colombo, Sri Lanka (On-site)', 1.0);
+    leftAlignedText(45, 0.01, 11, 'Created and edited promotional materials for student events. Collaborated on marketing', 0.8);
+    leftAlignedText(45, 0.01, 14, 'content and managed multiple design projects under tight deadlines.', 0.8);
 
     // Experience 5 - Director of Members at IEEE
-    leftAlignedText(55, 1.5, 20, 'Director of Members — IEEE Student Branch, IIT', 1.2);
+    leftAlignedText(45, 1.5, 20, 'Director of Members — IEEE Student Branch, IIT', 1.2);
     // Info icon for Director of Members — IEEE
-    createInfoIcon(58.5, 1.5, 20, 'exp_ieee_director');
-    leftAlignedText(55, 0.01, 20, 'Director of Members — IEEE Student Branch, IIT', 1.2, 0x1a1a1a);
-    leftAlignedText(55, 0.01, 23, 'Sep 2022 – Aug 2023 | Colombo, Sri Lanka (On-site)', 1.0);
-    leftAlignedText(55, 0.01, 26, 'Led membership drives, improved volunteer engagement, and promoted IEEE initiatives', 0.8);
-    leftAlignedText(55, 0.01, 29, 'through effective communication and leadership.', 0.8);
+    createInfoIcon(48.5, 1.5, 20, 'exp_ieee_director');
+    leftAlignedText(45, 0.01, 20, 'Director of Members — IEEE Student Branch, IIT', 1.2, 0x1a1a1a);
+    leftAlignedText(45, 0.01, 23, 'Sep 2022 – Aug 2023 | Colombo, Sri Lanka (On-site)', 1.0);
+    leftAlignedText(45, 0.01, 26, 'Led membership drives, improved volunteer engagement, and promoted IEEE initiatives', 0.8);
+    leftAlignedText(45, 0.01, 29, 'through effective communication and leadership.', 0.8);
 
     // Work Experience Logos - 3D boxes positioned at the start of each title
     // Mana Medical logo at start of Technical Lead title
-    createBox(52, 2, -40, 4, 4, 1, boxTexture.mana, '', 0xC4F5E8, true, true, 0.8); 
+    createBox(42, 2, -40, 4, 4, 1, boxTexture.mana, '', 0xC4F5E8, true, true, 0.8); 
     
     // University of Westminster logo at start of Full-stack Developer title  
-    createBox(52, 2, -25, 4, 4, 1, boxTexture.westminster, '', 0x000000, true, true, 0.8);
+    createBox(42, 2, -25, 4, 4, 1, boxTexture.westminster, '', 0x000000, true, true, 0.8);
     
     // Dataintics logo at start of Software QA Engineer title
-    createBox(52, 2, -10, 4, 4, 1, boxTexture.dataintics, '', 0xFFFFFF, true, true, 0.8);
+    createBox(42, 2, -10, 4, 4, 1, boxTexture.dataintics, '', 0xFFFFFF, true, true, 0.8);
     
     // Students Union logo at start of Editor title
-    createBox(52, 2, 5, 4, 4, 1, boxTexture.studentUnion, '', 0xFFFFFF, true, true, 0.8);
+    createBox(42, 2, 5, 4, 4, 1, boxTexture.studentUnion, '', 0xFFFFFF, true, true, 0.8);
     
     // IEEE logo at start of Director of Members title
-    createBox(52, 2, 20, 4, 4, 1, boxTexture.ieee, '', 0xFFFFFF, true, true, 0.8);
+    createBox(42, 2, 20, 4, 4, 1, boxTexture.ieee, '', 0xFFFFFF, true, true, 0.8);
 
     // Education Section - Right Side - 3D
-    create3DSectionTitle('EDUCATION', 65.8, 2, -105, 3.0, 3.0);
+    create3DSectionTitle('EDUCATION', 56, 2, -105, 3.0, 3.0);
     
     // Education 1 - University of Westminster
-    leftAlignedText(55, 1.0, -97, 'University of Westminster', 1.2);
-    leftAlignedText(55, 0.01, -97, 'University of Westminster', 1.2, 0x1a1a1a);
+    leftAlignedText(45, 1.0, -97, 'University of Westminster', 1.2);
+    leftAlignedText(45, 0.01, -97, 'University of Westminster', 1.2, 0x1a1a1a);
     // Add info icon for University of Westminster
-    createInfoIcon(58.5, 1.0, -97, 'westminster');
-    leftAlignedText(55, 0.01, -94, 'BEng (Hons) Software Engineering', 1.0);
-    leftAlignedText(55, 0.01, -91, 'Sep 2021 – Jun 2024 | London, United Kingdom', 0.8);
-    leftAlignedText(55, 0.01, -88, 'Graduated with First Class Honours.', 0.8);
+    createInfoIcon(48.5, 1.0, -97, 'westminster');
+    leftAlignedText(45, 0.01, -94, 'BEng (Hons) Software Engineering', 1.0);
+    leftAlignedText(45, 0.01, -91, 'Sep 2021 – Jun 2024 | London, United Kingdom', 0.8);
+    leftAlignedText(45, 0.01, -88, 'Graduated with First Class Honours.', 0.8);
 
     // Education 2 - Informatics Institute of Technology
-    leftAlignedText(55, 1.0, -82, 'Informatics Institute of Technology (IIT Campus)', 1.2);
-    leftAlignedText(55, 0.01, -82, 'Informatics Institute of Technology (IIT Campus)', 1.2, 0x1a1a1a);
+    leftAlignedText(45, 1.0, -82, 'Informatics Institute of Technology (IIT Campus)', 1.2);
+    leftAlignedText(45, 0.01, -82, 'Informatics Institute of Technology (IIT Campus)', 1.2, 0x1a1a1a);
     // Add info icon for Informatics Institute of Technology
-    createInfoIcon(58.5, 1.0, -82, 'iit');
-    leftAlignedText(55, 0.01, -79, 'BEng (Hons) Software Engineering (Affiliated with University of Westminster)', 1.0);
-    leftAlignedText(55, 0.01, -79, 'Sep 2021 – Aug 2023 | Colombo, Sri Lanka', 0.8);
-    leftAlignedText(55, 0.01, -76, 'Achieved First Class Honours.', 0.8);
-    leftAlignedText(55, 0.01, -73, '', 0.8);
+    createInfoIcon(48.5, 1.0, -82, 'iit');
+    leftAlignedText(45, 0.01, -79, 'BEng (Hons) Software Engineering (Affiliated with University of Westminster)', 1.0);
+    leftAlignedText(45, 0.01, -79, 'Sep 2021 – Aug 2023 | Colombo, Sri Lanka', 0.8);
+    leftAlignedText(45, 0.01, -76, 'Achieved First Class Honours.', 0.8);
+    leftAlignedText(45, 0.01, -73, '', 0.8);
 
     // Education 3 - S. Thomas' College
-    leftAlignedText(55, 1.0, -67, 'S. Thomas\' College, Mount Lavinia', 1.2);
-    leftAlignedText(55, 0.01, -67, 'S. Thomas\' College, Mount Lavinia', 1.2, 0x1a1a1a);
+    leftAlignedText(45, 1.0, -67, 'S. Thomas\' College, Mount Lavinia', 1.2);
+    leftAlignedText(45, 0.01, -67, 'S. Thomas\' College, Mount Lavinia', 1.2, 0x1a1a1a);
     // Add info icon for S. Thomas' College
-    createInfoIcon(58.5, 1.0, -67, 'stc');
-    leftAlignedText(55, 0.01, -64, 'GCE Advanced Level – Physical Science Stream (A/L) | Jan 2018 – Aug 2020 | Grades: A, 2C', 1.0);
-    leftAlignedText(55, 0.01, -61, 'GCE Ordinary Level (O/L) | Jan 2007 – Dec 2017 | Grades: 8A, 1B', 1.0);
+    createInfoIcon(48.5, 1.0, -67, 'stc');
+    leftAlignedText(45, 0.01, -64, 'GCE Advanced Level – Physical Science Stream (A/L) | Jan 2018 – Aug 2020 | Grades: A, 2C', 1.0);
+    leftAlignedText(45, 0.01, -61, 'GCE Ordinary Level (O/L) | Jan 2007 – Dec 2017 | Grades: 8A, 1B', 1.0);
 
     const instagramGradient = 0xE1306C;
     
@@ -3219,6 +3411,13 @@ Ammo().then((Ammo) => {
     // createFootball(90.5, 1.03, 75, 0.02); // Football
     // createThingHandWednesday(77, -0.7, 80, 5); // Thing Hand from Wednesday Addams
     // create3DSectionTitle('MY WORLD', 79, 2, 95, 3.0, 3.0);
+    
+    createMicroRobotBug(88, 15, -90, 3.5);
+    createPerseveranceMarsRover(100, 0, -65, 8);
+    createSpiderMarsBot(98, 0, -30, 8);
+    createTerrariumBotsNerdScribbles(97, 0, 0, 0.9);
+    createRobotDrone(95, 9, 20, 4);
+    createTarsMyVersion(90, 0, 40, 3);
 
     // Tools Section
     create3DSectionTitle('SKILLS & TECHNOLOGIES', -68, 2, 75, 3.0, 3.0);
@@ -3232,7 +3431,7 @@ Ammo().then((Ammo) => {
     createEarth(0, 12, -105, 10); // Position earth model on the ground near the time machine
 
     // Add dancing alien model to the ground
-    createDancingAlien(88, 0, -113, 8); // Position dancing alien model on the ground
+    createDancingAlien(78, 0, -113, 8); // Position dancing alien model on the ground
 
     // Create interactive tool carousel instead of multiple overlapping images
     createToolCarousel(-70, 9, 60, 4, 4);
@@ -3242,13 +3441,13 @@ Ammo().then((Ammo) => {
 
     // Add waving flags for each educational institution
     // University of Westminster flag - positioned at x=54 to align with text
-    createWavingFlag(54, 0, -97, 6, 4, 10, './src/jsm/flags/University of Westminster.png', 'University of Westminster');
+    createWavingFlag(43, 0, -97, 6, 4, 10, './src/jsm/flags/University of Westminster.png', 'University of Westminster');
     
     // Informatics Institute of Technology flag - positioned at x=54 to align with text
-    createWavingFlag(54, 0, -82, 6, 4, 10, './src/jsm/flags/Informatics Institute of Technology.png', 'Informatics Institute of Technology');
+    createWavingFlag(43, 0, -82, 6, 4, 10, './src/jsm/flags/Informatics Institute of Technology.png', 'Informatics Institute of Technology');
     
     // S. Thomas' College flag - positioned at x=54 to align with text
-    createWavingFlag(54, 0, -67, 6, 4, 10, './src/jsm/flags/S.Thomas College.png', 'S. Thomas\' College');
+    createWavingFlag(43, 0, -67, 6, 4, 10, './src/jsm/flags/S.Thomas College.png', 'S. Thomas\' College');
 
     addParticles();
     glowingParticles();
