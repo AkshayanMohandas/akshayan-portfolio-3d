@@ -20,8 +20,36 @@ export function rotateCamera(ballPosition) {
   if (
     ballPosition.position.x > -80 &&
     ballPosition.position.x < -60 &&
-    ballPosition.position.z > -100 &&
-    ballPosition.position.z < 70
+    ballPosition.position.z > -95 &&
+    ballPosition.position.z < 30
+  ) {
+    targetPos = new THREE.Vector3(
+      ballPosition.position.x,
+      ballPosition.position.y + 60,
+      ballPosition.position.z + 40
+    );
+  }
+
+  // Work Experience area - enforce top-down camera
+  else if (
+    ballPosition.position.x > 40 &&
+    ballPosition.position.x < 72 &&
+    ballPosition.position.z > -60 &&
+    ballPosition.position.z < 42
+  ) {
+    targetPos = new THREE.Vector3(
+      ballPosition.position.x,
+      ballPosition.position.y + 60,
+      ballPosition.position.z + 40
+    );
+  }
+
+  // Education area - enforce top-down camera
+  else if (
+    ballPosition.position.x > 40 &&
+    ballPosition.position.x < 72 &&
+    ballPosition.position.z > -95 &&
+    ballPosition.position.z < -60
   ) {
     targetPos = new THREE.Vector3(
       ballPosition.position.x,
@@ -123,14 +151,6 @@ export function launchClickPosition(event) {
       return;
     }
     
-    // Check if it's an arrow button for carousel navigation
-    if (pickedObject.userData.isArrow && pickedObject.userData.clickable) {
-      console.log(`Arrow clicked: ${pickedObject.userData.direction}`);
-      if (window.navigateCarousel) {
-        window.navigateCarousel(pickedObject.userData.direction);
-      }
-      return;
-    }
     
     // Check for info icon clicks
     if (pickedObject.userData.type === 'infoIcon' && pickedObject.userData.infoKey) {
