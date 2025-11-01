@@ -856,6 +856,112 @@ Ammo().then((Ammo) => {
     });
   }
 
+  // Display letter "i" inside letter "O" to create info symbol (flat 2D shape, clickable)
+  function displayLetterI(x, y, z, infoKey, fontSize = 1.0) {
+    var text_loader = new THREE.FontLoader();
+
+    text_loader.load('./src/jsm/fonts/Roboto_Regular.json', function (font) {
+      var color = 0x003747; // Dark blue-green (#003747)
+      var emissiveColor = 0x005A6B; // Lighter blue-green for glow
+
+      var matLite = new THREE.MeshPhongMaterial({
+        color: color,
+        emissive: emissiveColor,
+        emissiveIntensity: 0.6, // Glow intensity
+        transparent: true,
+        opacity: 1,
+        side: THREE.DoubleSide,
+      });
+
+      // Create the large letter "O" geometry (2D shape)
+      var oSize = fontSize * 2.5; // Make O much bigger
+      var oShapes = font.generateShapes('O', oSize);
+      var oGeometry = new THREE.ShapeBufferGeometry(oShapes);
+
+      oGeometry.computeBoundingBox();
+
+      // Center the O properly at origin (0, 0)
+      const oXMid = -0.5 * (oGeometry.boundingBox.max.x + oGeometry.boundingBox.min.x);
+      const oYMid = -0.5 * (oGeometry.boundingBox.max.y + oGeometry.boundingBox.min.y);
+      oGeometry.translate(oXMid, oYMid, 0);
+
+      // Calculate the size of O for the invisible clickable plane
+      const oWidth = oGeometry.boundingBox.max.x - oGeometry.boundingBox.min.x;
+      const oHeight = oGeometry.boundingBox.max.y - oGeometry.boundingBox.min.y;
+      const planeSize = Math.max(oWidth, oHeight) * 1.2; // Slightly larger to cover the whole O
+
+      // Create invisible clickable plane to fill the entire O area
+      var planeGeometry = new THREE.PlaneGeometry(planeSize, planeSize);
+      var planeMaterial = new THREE.MeshBasicMaterial({
+        visible: false, // Completely invisible
+        transparent: true,
+        opacity: 0
+      });
+      var clickablePlane = new THREE.Mesh(planeGeometry, planeMaterial);
+      clickablePlane.position.set(x, y, z);
+      clickablePlane.rotation.x = -Math.PI * 0.5; // Rotate to lay flat on the ground
+      
+      // Set user data for click detection
+      clickablePlane.userData = {
+        type: 'infoIcon',
+        infoKey: infoKey,
+        hoverable: true,
+        hoverScale: 1.2,
+        noAnimation: true // Disable hover animations, keep steady
+      };
+      
+      scene.add(clickablePlane);
+      cursorHoverObjects.push(clickablePlane);
+
+      var oMesh = new THREE.Mesh(oGeometry, matLite);
+      oMesh.position.set(x, y, z);
+      oMesh.rotation.x = -Math.PI * 0.5; // Rotate to lay flat on the ground
+      
+      // Set user data for click detection
+      oMesh.userData = {
+        type: 'infoIcon',
+        infoKey: infoKey,
+        hoverable: true,
+        hoverScale: 1.2,
+        noAnimation: true // Disable hover animations, keep steady
+      };
+      
+      scene.add(oMesh);
+      cursorHoverObjects.push(oMesh);
+      oMesh.userData.originalScale = oMesh.scale.clone();
+
+      // Create the smaller letter "i" geometry (to fit inside O, 2D shape)
+      var iSize = fontSize * 1.1; // Bigger i to fit inside O
+      var iShapes = font.generateShapes('i', iSize);
+      var iGeometry = new THREE.ShapeBufferGeometry(iShapes);
+
+      iGeometry.computeBoundingBox();
+
+      // Center the i properly at origin (0, 0) - same as O
+      const iXMid = -0.5 * (iGeometry.boundingBox.max.x + iGeometry.boundingBox.min.x);
+      const iYMid = -0.5 * (iGeometry.boundingBox.max.y + iGeometry.boundingBox.min.y);
+      iGeometry.translate(iXMid, iYMid, 0);
+
+      // Position i at the exact same center as O (both centered at x, y, z)
+      var iMesh = new THREE.Mesh(iGeometry, matLite);
+      iMesh.position.set(x, y, z); // Center i inside O - same position as O
+      iMesh.rotation.x = -Math.PI * 0.5; // Rotate to lay flat on the ground
+      
+      // Set user data for click detection (same as O)
+      iMesh.userData = {
+        type: 'infoIcon',
+        infoKey: infoKey,
+        hoverable: true,
+        hoverScale: 1.2,
+        noAnimation: true // Disable hover animations, keep steady
+      };
+      
+      scene.add(iMesh);
+      cursorHoverObjects.push(iMesh);
+      iMesh.userData.originalScale = iMesh.scale.clone();
+    });
+  }
+
   //create projector screen
   function createProjectorScreen(x, y, z, urlLink, rotation = 0) {
     const screenScale = { x: 20, y: 12, z: 0.5 };
@@ -2451,6 +2557,54 @@ Ammo().then((Ammo) => {
     });
   }
 
+  // Load and create the Meteorite model
+  function createMeteorite(x, y, z, scale = 1) {
+    const loader = new GLTFLoader();
+    
+    loader.load('./src/models/meteorite.glb', (gltf) => {
+      const model = gltf.scene;
+      
+      // Position the model on the ground
+      model.position.set(x, y, z);
+      model.scale.setScalar(scale);
+      
+      // Rotate the model appropriately for the ground
+      model.rotation.x = 0;
+      model.rotation.y = 0;
+      model.rotation.z = 0;
+      
+      // Enable shadows
+      model.traverse((child) => {
+        if (child.isMesh) {
+          child.castShadow = true;
+          child.receiveShadow = true;
+        }
+      });
+      
+      // Add to scene
+      scene.add(model);
+      
+      // Handle animations if they exist
+      if (gltf.animations && gltf.animations.length > 0) {
+        const mixer = new THREE.AnimationMixer(model);
+        const action = mixer.clipAction(gltf.animations[0]);
+        action.play();
+        
+        // Store mixer for animation updates
+        model.userData.mixer = mixer;
+      }
+      
+      // Add physics for the meteorite (static object)
+      addRigidPhysics(model, { x: 2, y: 2, z: 2 });
+      
+      console.log('Meteorite GLB model loaded successfully');
+    }, (progress) => {
+      console.log('Meteorite loading progress:', (progress.loaded / progress.total * 100) + '%');
+    }, (error) => {
+      console.error('Error loading Meteorite GLB model:', error);
+    });
+  }
+
   // Load and create the Perseverance Mars Rover model
   function createPerseveranceMarsRover(x, y, z, scale = 1) {
     const loader = new GLTFLoader();
@@ -3160,7 +3314,7 @@ Ammo().then((Ammo) => {
     // Project 1
     leftAlignedText(-80, 1.5, -95, 'Cruise Ship Boarding System', 1.5);
     // Info icon for Cruise Ship Boarding System
-    createInfoIcon(-76.5, 1.5, -95, 'proj_cruise');
+    displayLetterI(-51.5, 1.5, -95.6, 'proj_cruise', 1.0);
     leftAlignedText(-80, 0.01, -95, 'Cruise Ship Boarding System', 1.5, 0x1a1a1a);
     leftAlignedText(-80, 0.01, -91, 'A Java console program that manages cabin assignments and passenger data for a cruise ship.', 0.8);
     leftAlignedText(-80, 0.01, -89, 'Includes features for adding, viewing, and sorting passengers using a circular queue.', 0.8);
@@ -3168,7 +3322,7 @@ Ammo().then((Ammo) => {
     // Project 2
     leftAlignedText(-80, 1.5, -83, 'Skin Consultation Management System', 1.5);
     // Info icon for Skin Consultation Management System
-    createInfoIcon(-76.5, 1.5, -83, 'proj_skin');
+    displayLetterI(-41.65, 1.5, -83.6, 'proj_skin', 1.0);
     leftAlignedText(-80, 0.01, -83, 'Skin Consultation Management System', 1.5, 0x1a1a1a);
     leftAlignedText(-80, 0.01, -79, 'A Java application with both console and GUI interfaces to manage doctors, patients, and', 0.8);
     leftAlignedText(-80, 0.01, -77, 'consultations in a dermatology clinic. Features file-based data persistence and encryption.', 0.8);
@@ -3176,7 +3330,7 @@ Ammo().then((Ammo) => {
     // Project 3
     leftAlignedText(-80, 1.5, -71, 'Tripper – A Tourism Website', 1.5);
     // Info icon for Tripper website
-    createInfoIcon(-76.5, 1.5, -71, 'proj_tripper');
+    displayLetterI(-51.7, 1.5, -71.6, 'proj_tripper', 1.0);
     leftAlignedText(-80, 0.01, -71, 'Tripper – A Tourism Website', 1.5, 0x1a1a1a);
     leftAlignedText(-80, 0.01, -67, 'A dynamic web application created using HTML, CSS, and JavaScript that allows users to explore destinations and', 0.8);
     leftAlignedText(-80, 0.01, -65, 'purchase travel-related products. Features engaging UI design and modern front-end development practices.', 0.8);
@@ -3184,7 +3338,7 @@ Ammo().then((Ammo) => {
     // Project 4
     leftAlignedText(-80, 1.5, -59, 'Old Asteroids Arcade Game (Formal Specification)', 1.5);
     // Info icon for Old Asteroids Arcade Game
-    createInfoIcon(-76.5, 1.5, -59, 'proj_asteroids');
+    displayLetterI(-31.7, 1.5, -59.6, 'proj_asteroids', 1.0);
     leftAlignedText(-80, 0.01, -59, 'Old Asteroids Arcade Game (Formal Specification)', 1.5, 0x1a1a1a);
     leftAlignedText(-80, 0.01, -55, 'A formal specification project using the B-Method to model and verify a simplified version of the', 0.8);
     leftAlignedText(-80, 0.01, -53, 'classic Asteroids game. Verified using Atelier B and ProB tools.', 0.8);
@@ -3192,7 +3346,7 @@ Ammo().then((Ammo) => {
     // Project 5
     leftAlignedText(-80, 1.5, -47, 'Sliding Puzzles – Graph Acyclicity Checker', 1.5);
     // Info icon for Sliding Puzzles – Graph Acyclicity Checker
-    createInfoIcon(-76.5, 1.5, -47, 'proj_sliding');
+    displayLetterI(-39, 1.5, -47.6, 'proj_sliding', 1.0);
     leftAlignedText(-80, 0.01, -47, 'Sliding Puzzles – Graph Acyclicity Checker', 1.5, 0x1a1a1a);
     leftAlignedText(-80, 0.01, -43, 'A Java-based algorithmic project implementing the sink elimination algorithm to determine', 0.8);
     leftAlignedText(-80, 0.01, -41, 'whether a directed graph is acyclic. Handles graph data using adjacency lists.', 0.8);
@@ -3200,7 +3354,7 @@ Ammo().then((Ammo) => {
     // Project 6
     leftAlignedText(-80, 1.5, -35, 'Weather Explorer & Tourist Guide App (SwiftUI)', 1.5);
     // Info icon for Weather Explorer & Tourist Guide App
-    createInfoIcon(-76.5, 1.5, -35, 'proj_weather');
+    displayLetterI(-35, 1.5, -35.6, 'proj_weather', 1.0);
     leftAlignedText(-80, 0.01, -35, 'Weather Explorer & Tourist Guide App (SwiftUI)', 1.5, 0x1a1a1a);
     leftAlignedText(-80, 0.01, -31, 'An iOS app developed with SwiftUI that provides real-time weather updates and interactive tourist', 0.8);
     leftAlignedText(-80, 0.01, -29, 'maps. Integrates OpenWeatherMap API, CoreLocation, and MapKit for dynamic city-based updates.', 0.8);
@@ -3208,7 +3362,7 @@ Ammo().then((Ammo) => {
     // Project 7
     leftAlignedText(-80, 1.5, -23, 'Student Progression Outcome Prediction System', 1.5);
     // Info icon for Student Progression Outcome Prediction System
-    createInfoIcon(-76.5, 1.5, -23, 'proj_progression');
+    displayLetterI(-32.9, 1.5, -23.6, 'proj_progression', 1.0);
     leftAlignedText(-80, 0.01, -23, 'Student Progression Outcome Prediction System', 1.5, 0x1a1a1a);
     leftAlignedText(-80, 0.01, -19, 'A Python program that determines student progression outcomes based on their module credits.', 0.8);
     leftAlignedText(-80, 0.01, -17, 'Validates user input and calculates results such as "Progress" or "Exclude" with statistical summaries.', 0.8);
@@ -3216,7 +3370,7 @@ Ammo().then((Ammo) => {
     // Project 8
     leftAlignedText(-80, 1.5, -11, 'Concurrent Ticketing System', 1.5);
     // Info icon for Concurrent Ticketing System
-    createInfoIcon(-76.5, 1.5, -11, 'proj_concurrent');
+    displayLetterI(-51.6, 1.5, -11.6, 'proj_concurrent', 1.0);
     leftAlignedText(-80, 0.01, -11, 'Concurrent Ticketing System', 1.5, 0x1a1a1a);
     leftAlignedText(-80, 0.01, -7, 'A multithreaded Java application designed to simulate passengers and technicians interacting with a shared', 0.8);
     leftAlignedText(-80, 0.01, -5, 'ticket machine. Built using Finite State Processes (FSP) and verified through the LTSA tool.', 0.8);
@@ -3224,7 +3378,7 @@ Ammo().then((Ammo) => {
     // Project 9
     leftAlignedText(-80, 1.5, 1, 'Cricozy - Cricket Coaching Platform', 1.5);
     // Info icon for Cricozy - Cricket Coaching Platform
-    createInfoIcon(-76.5, 1.5, 1, 'proj_cricozy');
+    displayLetterI(-45.5, 1.5, 0.4, 'proj_cricozy', 1.0);
     leftAlignedText(-80, 0.01, 1, 'Cricozy - Cricket Coaching Platform', 1.5, 0x1a1a1a);
     leftAlignedText(-80, 0.01, 5, 'A cross-platform app built with Flutter, Python, and Firebase that delivers smart, personalized cricket', 0.8);
     leftAlignedText(-80, 0.01, 7, 'coaching. Uses machine learning to analyze player performance and enhance training.', 0.8);
@@ -3232,7 +3386,7 @@ Ammo().then((Ammo) => {
     // Project 10
     leftAlignedText(-80, 1.5, 13, 'EpiDerm – Skin Disease Detection System', 1.5);
     // Info icon for EpiDerm – Skin Disease Detection System
-    createInfoIcon(-76.5, 1.5, 13, 'proj_epiderm');
+    displayLetterI(-39.55, 1.5, 12.4, 'proj_epiderm', 1.0);
     leftAlignedText(-80, 0.01, 13, 'EpiDerm – Skin Disease Detection System', 1.5, 0x1a1a1a);
     leftAlignedText(-80, 0.01, 17, 'AI-powered mobile app that detects skin diseases from images.', 0.8);
     leftAlignedText(-80, 0.01, 19, 'Built with React, Firebase, and machine learning for fast, accurate results.', 0.8);
@@ -3243,7 +3397,7 @@ Ammo().then((Ammo) => {
     // Experience 1 - Technical Lead at Mana Medical
     leftAlignedText(45, 1.5, -35, 'Technical Lead — Mana Medical', 1.2);
     // Info icon for Technical Lead — Mana Medical
-    createInfoIcon(48.5, 1.5, -35, 'exp_mana');
+    displayLetterI(70.1, 1.5, -35.6, 'exp_mana', 1.0);
     leftAlignedText(45, 0.01, -35, 'Technical Lead — Mana Medical', 1.2, 0x1a1a1a);
     leftAlignedText(45, 0.01, -32, 'Jan 2025 – Present | London, UK (Hybrid)', 1.0);
     leftAlignedText(45, 0.01, -29, 'Leading mobile application development using React Native and full-stack technologies.', 0.8);
@@ -3252,7 +3406,7 @@ Ammo().then((Ammo) => {
     // Experience 2 - Full-stack Developer at University of Westminster
     leftAlignedText(45, 1.5, -20, 'Full-stack Developer — University of Westminster', 1.2);
     // Info icon for Full-stack Developer — University of Westminster
-    createInfoIcon(48.5, 1.5, -20, 'exp_westminster_dev');
+    displayLetterI(82.5, 1.5, -20.6, 'exp_westminster_dev', 1.0);
     leftAlignedText(45, 0.01, -20, 'Full-stack Developer — University of Westminster', 1.2, 0x1a1a1a);
     leftAlignedText(45, 0.01, -17, 'Feb 2024 – May 2024 | London, UK (Hybrid)', 1.0);
     leftAlignedText(45, 0.01, -14, 'Developed and maintained Django-based web applications. Improved RoomView\'s front-end', 0.8);
@@ -3261,7 +3415,7 @@ Ammo().then((Ammo) => {
     // Experience 3 - Software Quality Assurance Engineer at Dataintics
     leftAlignedText(45, 1.5, -5, 'Software Quality Assurance Engineer (Intern) — Dataintics', 1.2);
     // Info icon for Software QA Engineer — Dataintics
-    createInfoIcon(48.5, 1.5, -5, 'exp_dataintics');
+    displayLetterI(89.3, 1.5, -5.6, 'exp_dataintics', 1.0);
     leftAlignedText(45, 0.01, -5, 'Software Quality Assurance Engineer (Intern) — Dataintics', 1.2, 0x1a1a1a);
     leftAlignedText(45, 0.01, -2, 'May 2023 – Jul 2023 | Colombo, Sri Lanka (On-site)', 1.0);
     leftAlignedText(45, 0.01, 1, 'Performed quality assurance testing for the KoverUI insurance platform, ensuring', 0.8);
@@ -3270,7 +3424,7 @@ Ammo().then((Ammo) => {
     // Experience 4 - Editor at Students' Union
     leftAlignedText(45, 1.5, 10, 'Editor – Students\' Union 2022/23 — IIT', 1.2);
     // Info icon for Editor — Students' Union
-    createInfoIcon(48.5, 1.5, 10, 'exp_editor_su');
+    displayLetterI(75, 1.5, 9.4, 'exp_editor_su', 1.0);
     leftAlignedText(45, 0.01, 10, 'Editor – Students\' Union 2022/23 — IIT', 1.2, 0x1a1a1a);
     leftAlignedText(45, 0.01, 13, 'Oct 2022 – Sep 2023 | Colombo, Sri Lanka (On-site)', 1.0);
     leftAlignedText(45, 0.01, 16, 'Created and edited promotional materials for student events. Collaborated on marketing', 0.8);
@@ -3279,7 +3433,7 @@ Ammo().then((Ammo) => {
     // Experience 5 - Director of Members at IEEE
     leftAlignedText(45, 1.5, 25, 'Director of Members — IEEE Student Branch, IIT', 1.2);
     // Info icon for Director of Members — IEEE
-    createInfoIcon(48.5, 1.5, 25, 'exp_ieee_director');
+    displayLetterI(81.5, 1.5, 24.4, 'exp_ieee_director', 1.0);
     leftAlignedText(45, 0.01, 25, 'Director of Members — IEEE Student Branch, IIT', 1.2, 0x1a1a1a);
     leftAlignedText(45, 0.01, 28, 'Sep 2022 – Aug 2023 | Colombo, Sri Lanka (On-site)', 1.0);
     leftAlignedText(45, 0.01, 31, 'Led membership drives, improved volunteer engagement, and promoted IEEE initiatives', 0.8);
@@ -3308,7 +3462,7 @@ Ammo().then((Ammo) => {
     leftAlignedText(45, 1.0, -97, 'University of Westminster', 1.2);
     leftAlignedText(45, 0.01, -97, 'University of Westminster', 1.2, 0x1a1a1a);
     // Add info icon for University of Westminster
-    createInfoIcon(48.5, 1.0, -97, 'westminster');
+    displayLetterI(65.5, 1.0, -97.6, 'westminster', 1.0);
     leftAlignedText(45, 0.01, -94, 'BEng (Hons) Software Engineering', 1.0);
     leftAlignedText(45, 0.01, -91, 'Sep 2021 – Jun 2024 | London, United Kingdom', 0.8);
     leftAlignedText(45, 0.01, -88, 'Graduated with First Class Honours.', 0.8);
@@ -3317,7 +3471,7 @@ Ammo().then((Ammo) => {
     leftAlignedText(45, 1.0, -82, 'Informatics Institute of Technology (IIT Campus)', 1.2);
     leftAlignedText(45, 0.01, -82, 'Informatics Institute of Technology (IIT Campus)', 1.2, 0x1a1a1a);
     // Add info icon for Informatics Institute of Technology
-    createInfoIcon(48.5, 1.0, -82, 'iit');
+    displayLetterI(82.5, 1.0, -82.6, 'iit', 1.0);
     leftAlignedText(45, 0.01, -79, 'BEng (Hons) Software Engineering (Affiliated with University of Westminster)', 1.0);
     leftAlignedText(45, 0.01, -76, 'Sep 2021 – Aug 2023 | Colombo, Sri Lanka', 0.8);
     leftAlignedText(45, 0.01, -73, 'Achieved First Class Honours.', 0.8);
@@ -3326,7 +3480,7 @@ Ammo().then((Ammo) => {
     leftAlignedText(45, 1.0, -67, 'S. Thomas\' College, Mount Lavinia', 1.2);
     leftAlignedText(45, 0.01, -67, 'S. Thomas\' College, Mount Lavinia', 1.2, 0x1a1a1a);
     // Add info icon for S. Thomas' College
-    createInfoIcon(48.5, 1.0, -67, 'stc');
+    displayLetterI(71.6, 1.0, -67.6, 'stc', 1.0);
     leftAlignedText(45, 0.01, -64, 'GCE Advanced Level – Physical Science Stream (A/L)', 1.0);
     leftAlignedText(45, 0.01, -62, 'Jan 2018 – Aug 2020 | Grades: A, 2C', 0.8);
     leftAlignedText(45, 0.01, -59, 'GCE Ordinary Level (O/L)', 1.0);
@@ -3354,6 +3508,9 @@ Ammo().then((Ammo) => {
 
     // Add blackhole model to the back of the area
     createBigBlackhole(-150, -50, -900, 100); // Position at the back of the area with scale 0.1
+
+    // Add meteorite model to the ground
+    createMeteorite(0, 0, -600, 10); // x: 0, y: 0, z: -600, scale: 10 - Position meteorite model on the ground
 
     // Create horizontal AKSHAYAN text
     createHorizontalAkshayanText();

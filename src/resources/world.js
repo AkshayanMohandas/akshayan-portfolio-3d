@@ -293,14 +293,6 @@ export const generateGalaxy = () => {
 
 export function moveParticles() {
   particleSystemObject.rotation.z += 0.0003;
-  lensFlareObject.rotation.z += 0.0002;
-  if (lensFlareObject.position.x < 750) {
-    lensFlareObject.position.x += 0.025;
-    lensFlareObject.position.y -= 0.001;
-  } else {
-    lensFlareObject.position.x = -750;
-    lensFlareObject.position.y = -50;
-  }
 
   //move stemkoski particles
   var time = 7 * clock.getElapsedTime();
